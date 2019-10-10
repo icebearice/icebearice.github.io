@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">57</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">58</span></a>
 
   </li>
         
@@ -423,6 +423,261 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Icebearice">
+      <meta itemprop="description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Icebearice">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/" class="post-title-link" itemprop="url">本地虚拟机连接XSHELL或SecureCRT</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+             
+             
+
+              <time title="创建时间：2019-05-19 20:21:10 / 修改时间：21:25:49" itemprop="dateCreated datePublished" datetime="2019-05-19T20:21:10+08:00">2019-05-19 20:21:10</time>
+            
+
+            
+              
+            <!--  old version
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-05-19T21:25:49+08:00" content="2019-05-19">
+                2019-05-19 21:25:49
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/虚拟机/" itemprop="url" rel="index"><span itemprop="name">虚拟机</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>用VMware Workstation装的虚拟机, 具体安装过程请自行百度啦, 搜索关键字CentOS对应版本的安装 就出来啦.</p>
+<p>来公司的第一件事, 老大叫我配个Go环境的虚拟机, 虚拟机的安装倒是跟着教程一步步的弄好了, 想要用SecureCRT连接本地虚拟机, 总不能用VMware Workstation自带的界面吧, 人家毕竟是专门做虚拟机的, 又不是专门做Shell工具的</p>
+<p>常见的Shell工具有Xshell和SecureCRT两种啦, SecureCRT有自带的文件传输功能, XShell想要传文件可能需要另一个产品叫XFTP, XFTP的远程文件系统就比SecureCRT的功能要多一些了, 如果只是有上传文件和下载文件功能的需求 又不想装多一个东西的话, 用SecureCRT自带的sz和rz命令就可以啦, 如果需要在图形界面远程浏览虚拟机的文件系统, 就下XFTP吧</p>
+</blockquote>
+<p><strong>上面都是废话, 下面才是主要内容</strong></p>
+<h3 id="虚拟机环境"><a href="#虚拟机环境" class="headerlink" title="虚拟机环境"></a>虚拟机环境</h3><p>VMware Workstation 10 + CentOS 6.8 + Windows10</p>
+<h3 id="连接工具"><a href="#连接工具" class="headerlink" title="连接工具"></a>连接工具</h3><p>SecureCRT或者XShell 这里用的是SecureCRT</p>
+<h3 id="连接前提"><a href="#连接前提" class="headerlink" title="连接前提"></a>连接前提</h3><ol>
+<li>虚拟机和远程终端工具</li>
+<li>配置静态IP, 免得每次连接的时候都要查看IP, 如果没有设置静态IP的话, IP会随着你每次联网而不断变更的(下文会讲解如何配置静态IP)</li>
+<li>虚拟机连接模式为NAT模式</li>
+</ol>
+<h3 id="如何配置虚拟机的静态IP"><a href="#如何配置虚拟机的静态IP" class="headerlink" title="如何配置虚拟机的静态IP"></a>如何配置虚拟机的静态IP</h3><ol>
+<li><p>查看网卡IP名 cd /etc/sysconfig/network-scripts/<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558269665512.png" alt="1558269665512"><img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558269751071.png" alt="1558269751071"></p>
+<p>ifcfg-eth开头的就都是你的网卡IP名啦, 你可能有多个, 没关系, 挑一个来用就行了</p>
+</li>
+<li><p>编辑网卡文件 vim ifcfg-eth0<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558269852776.png" alt="1558269852776"></p>
+</li>
+<li><p>确认ONBOOT项为yes, 将IPADDR NETMASK GATEWAK DNS1改为对应项(见下文)<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558270032883.png" alt="1558270032883"></p>
+</li>
+<li><p>打开VMware Workstation 选择菜单 编辑-虚拟网络编辑器</p>
+</li>
+<li><p>如果信息框都是灰的, 没关系, 点击更改设置 赋予管理员权限<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558270574164.png" alt="1558270574164"></p>
+</li>
+<li><p>选择VMnet8 修改其子网 网段随意 子网掩码192的是24位 即 255.255.255.0<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558270698346.png" alt="1558270698346"></p>
+</li>
+<li><p>设置完后, 点击NAT设置, 修改网关入口, 修改完后确定<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558270740396.png" alt="1558270740396"></p>
+</li>
+<li><p>再次点击确定, 需要等一会, 因为他在修改你的网卡设置</p>
+</li>
+<li><p>按道理来说, 目前所有的步骤设置完之后, 是没有问题的, 保险起见, 我们去适配器设置看看VMnet8网卡配置是否正确</p>
+</li>
+<li><p><img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558270928990.png" alt="1558270928990"></p>
+</li>
+<li><p>没问题之后, 将上面那个配置文件的IP 掩码和网关都配置好 dns配不配应该是没关系的<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558270032883.png" alt="1558270032883"></p>
+</li>
+<li><p>配置完后, 保存退出, 输入命令 service network restart<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558271120001.png" alt="1558271120001"></p>
+</li>
+<li><p>如果都是绿色的话 就没问题啦 如果有红色 配置肯定有问题的 可打ifconfig查看一下ip配置情况 有eth0的网卡配置就说明没问题啦<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558271728794.png" alt="1558271728794"></p>
+</li>
+<li><p>通过ifconfig获取的ip 地址 192.168.120.128(你有你的IP地址 自己查) 就可以用来远程连接了</p>
+</li>
+<li><p>打开SecureCRT或者XShell 建立新的连接 输入ip地址 并且输入用户名root或者你自己的用户名<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558271854996.png" alt="1558271854996"></p>
+</li>
+<li><p>连接成功<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558271863990.png" alt="1558271863990"></p>
+</li>
+</ol>
+<h3 id="迁移了虚拟机-无法联网-怎么处理"><a href="#迁移了虚拟机-无法联网-怎么处理" class="headerlink" title="迁移了虚拟机 无法联网 怎么处理"></a>迁移了虚拟机 无法联网 怎么处理</h3><ol>
+<li>在关闭虚拟机的情况下, 右键虚拟机-设置-网络适配器-高级<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558272157363.png" alt="1558272157363"></li>
+<li>未关闭虚拟机的的情况下, 生成键是不可选的, 需关闭虚拟机才可以点击, 关闭后点击生成, 会生成mac地址</li>
+<li>修改 ifcfg-eth0文件的HWADDR hardware地址 硬件地址即物理地址 修改为生成的mac地址<img src="/2019/05/19/Linux/本地虚拟机连接XSHELL或SecureCRT/1558272140519.png" alt="1558272140519"></li>
+<li>修改后, 重启网络 service network restart 应该是不行的, 会显示失败</li>
+<li>重启虚拟机即可解决</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -929,249 +1184,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/05/07/并发/并发常见方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Icebearice">
-      <meta itemprop="description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Icebearice">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/07/并发/并发常见方法/" class="post-title-link" itemprop="url">并发常见方法</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-             
-             
-
-              <time title="创建时间：2019-05-07 16:36:03 / 修改时间：16:36:59" itemprop="dateCreated datePublished" datetime="2019-05-07T16:36:03+08:00">2019-05-07 16:36:03</time>
-            
-
-            
-              
-            <!--  old version
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-05-07T16:36:59+08:00" content="2019-05-07">
-                2019-05-07 16:36:59
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/07/并发/并发常见方法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/07/并发/并发常见方法/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="并发常见方法"><a href="#并发常见方法" class="headerlink" title="并发常见方法"></a>并发常见方法</h1><h3 id="sleep方法"><a href="#sleep方法" class="headerlink" title="sleep方法"></a>sleep方法</h3><p>sleep是Thread类的静态方法, 暂停当前线程的活动, 休眠指定的毫秒数, 会抛出InterruptedException异常</p>
-<h3 id="run方法"><a href="#run方法" class="headerlink" title="run方法"></a>run方法</h3><p>Runnable是接口, 实现多线程的方式之一, 直接调用run方法, 只会执行同一线程中的任务, 而不会启动新线程. </p>
-<h3 id="start方法"><a href="#start方法" class="headerlink" title="start方法"></a>start方法</h3><p>调用Thread.start方法, 这个方法将创建一个执行run方法的新线程, 在底层创建新线程之后, 会执行run方法</p>
-<h3 id="return方法"><a href="#return方法" class="headerlink" title="return方法"></a>return方法</h3><p>正常结束, 或者中断进程</p>
-<h3 id="Stop方法"><a href="#Stop方法" class="headerlink" title="Stop方法"></a>Stop方法</h3><p>其他线程可以调用它终止线程, 已被弃用, 弃用的原因是 stop方法是终止当前线程所有未结束的方法, 当线程被终止时, 立即释放所有相关对象的锁, 导致对象处于与原来不一致的状态, 且无法还原</p>
-<h3 id="Suspend方法"><a href="#Suspend方法" class="headerlink" title="Suspend方法"></a>Suspend方法</h3><p>挂起一个持有一个锁的线程, 不释放锁, 该锁在回复之前都是不可用的, 很容易造成死锁</p>
-<h3 id="resume方法"><a href="#resume方法" class="headerlink" title="resume方法"></a>resume方法</h3><p>唤醒一个被挂起的线程, 该方法在suspend方法后调用</p>
-<h3 id="线程运行的状态"><a href="#线程运行的状态" class="headerlink" title="线程运行的状态"></a>线程运行的状态</h3><ul>
-<li>new 新创建</li>
-<li>runnable 可运行 一旦启用start方法,  线程则处于runnable状态 可运行分为 <ul>
-<li>正在运行</li>
-<li>没有运行 没有运行则可能是 以下三种状态的一种<ul>
-<li>blocked 阻塞 请求锁 得到锁后 变成可运行状态</li>
-<li>waiting 等待 等待通知 被通知后 变成可运行</li>
-<li>timed waiting 超时等待 等待通知 被通知或者超时后 变成可运行</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>terminated 被终止 执行exits方法</li>
-</ul>
-<h3 id="getState方法"><a href="#getState方法" class="headerlink" title="getState方法"></a>getState方法</h3><p>获取一个线程的当前状态</p>
-<h3 id="被终止的线程"><a href="#被终止的线程" class="headerlink" title="被终止的线程"></a>被终止的线程</h3><ul>
-<li>原因有两种<ul>
-<li>因为run方法正常退出return而自然死亡</li>
-<li>因为一个没有捕获的异常throws终止了run方法而意外死亡<ul>
-<li>stop杀死一个线程的时候, 该方法抛出ThreadDeath错误对象异常, 由此杀死线程</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="join方法"><a href="#join方法" class="headerlink" title="join方法"></a>join方法</h3><p>等待指定线程终止, 可带参数, 指等待指定毫秒数</p>
-<h3 id="守护进程"><a href="#守护进程" class="headerlink" title="守护进程"></a>守护进程</h3><p>为其他线程提供服务, 比如ftp服务, 若所有进程中, 只有守护进程在运行, 虚拟机就会退出, 守护进程不应该去访问固有资源例如数据库, 因为守护进程随时可能被一个操作中断</p>
-<h3 id="竞争条件"><a href="#竞争条件" class="headerlink" title="竞争条件"></a>竞争条件</h3><p>两个或两个以上的线程需要共享同一个数据的存取, 则存在竞争条件</p>
-<h3 id="可重入锁RenntrantLock类"><a href="#可重入锁RenntrantLock类" class="headerlink" title="可重入锁RenntrantLock类"></a>可重入锁RenntrantLock类</h3><p>通过创建可重入锁的实力, 临界区的开始调用lock方法, 一般用try catch finally代码块限制临界区确保临界区的代码执行完之后, finally块需要释放锁unlock(), 可重入锁有一个对象持有数计数器, 用于锁的嵌套调用, 表明目前持有的对象数量, 当持有计数为0时, 线程释放锁</p>
-<p>可重入锁可以有多个条件对象, 根据条件对象来让线程进入条件的等待集中</p>
-<p>锁被释放的时候, 调用signalAll接触该条件的等待集中的所有线程的阻塞状态</p>
-<p>若调用signal方法, 该条件会随机选择一个线程 释放其阻塞状态 这种方法有风险 如果该线程不满足条件的话  其他被阻塞的线程就永远都不会再运行了, 就造成死锁的现象了 </p>
-<p>ReentrantLock的构造方法可以构造一个公平策略的可重入锁, 公平锁会优先选择等待时间最长的线程, 即便是这样, 如果线程调度器因为策略选择忽略这个线程, 即便这个线程等待了很长时间, 他也会被忽略, 不能确保完全公平</p>
-<h3 id="Synchronized内在锁-固有锁"><a href="#Synchronized内在锁-固有锁" class="headerlink" title="Synchronized内在锁 固有锁"></a>Synchronized内在锁 固有锁</h3><p>对象自带的内部所, 和lock不一样的是, 内部对象锁只可以有一个相关条件</p>
-<p>用wait方法添加一个线程到等待集中, 用notifyAll/ notify接触等待线程的阻塞状态, notify同样也是随机接触一个线程, 有死锁的风险</p>
-<h3 id="死锁的场景"><a href="#死锁的场景" class="headerlink" title="死锁的场景"></a>死锁的场景</h3><p>可重入锁或者同步对象锁 用signal或者notify随机唤醒一个线程, 导致死锁</p>
-<p>suspend方法挂起一个线程后, suspend是不会释放锁的, 若线程试图获取同一个锁, 程序会变死锁</p>
-<p>MySQL并发修改同一记录或封锁同一范围导致相互等待</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1215,7 +1232,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">57</span>
+                    <span class="site-state-item-count">58</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1439,7 +1456,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共70.9k字</span>
+  <span class="post-count">博客全站共72k字</span>
 </div>
         
 <div class="busuanzi-count">

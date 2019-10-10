@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">57</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">58</span></a>
 
   </li>
         
@@ -423,6 +423,244 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/05/07/并发/并发常见方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Icebearice">
+      <meta itemprop="description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Icebearice">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/07/并发/并发常见方法/" class="post-title-link" itemprop="url">并发常见方法</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+             
+             
+
+              <time title="创建时间：2019-05-07 16:36:03 / 修改时间：16:36:59" itemprop="dateCreated datePublished" datetime="2019-05-07T16:36:03+08:00">2019-05-07 16:36:03</time>
+            
+
+            
+              
+            <!--  old version
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-05-07T16:36:59+08:00" content="2019-05-07">
+                2019-05-07 16:36:59
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/07/并发/并发常见方法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/07/并发/并发常见方法/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="并发常见方法"><a href="#并发常见方法" class="headerlink" title="并发常见方法"></a>并发常见方法</h1><h3 id="sleep方法"><a href="#sleep方法" class="headerlink" title="sleep方法"></a>sleep方法</h3><p>sleep是Thread类的静态方法, 暂停当前线程的活动, 休眠指定的毫秒数, 会抛出InterruptedException异常</p>
+<h3 id="run方法"><a href="#run方法" class="headerlink" title="run方法"></a>run方法</h3><p>Runnable是接口, 实现多线程的方式之一, 直接调用run方法, 只会执行同一线程中的任务, 而不会启动新线程. </p>
+<h3 id="start方法"><a href="#start方法" class="headerlink" title="start方法"></a>start方法</h3><p>调用Thread.start方法, 这个方法将创建一个执行run方法的新线程, 在底层创建新线程之后, 会执行run方法</p>
+<h3 id="return方法"><a href="#return方法" class="headerlink" title="return方法"></a>return方法</h3><p>正常结束, 或者中断进程</p>
+<h3 id="Stop方法"><a href="#Stop方法" class="headerlink" title="Stop方法"></a>Stop方法</h3><p>其他线程可以调用它终止线程, 已被弃用, 弃用的原因是 stop方法是终止当前线程所有未结束的方法, 当线程被终止时, 立即释放所有相关对象的锁, 导致对象处于与原来不一致的状态, 且无法还原</p>
+<h3 id="Suspend方法"><a href="#Suspend方法" class="headerlink" title="Suspend方法"></a>Suspend方法</h3><p>挂起一个持有一个锁的线程, 不释放锁, 该锁在回复之前都是不可用的, 很容易造成死锁</p>
+<h3 id="resume方法"><a href="#resume方法" class="headerlink" title="resume方法"></a>resume方法</h3><p>唤醒一个被挂起的线程, 该方法在suspend方法后调用</p>
+<h3 id="线程运行的状态"><a href="#线程运行的状态" class="headerlink" title="线程运行的状态"></a>线程运行的状态</h3><ul>
+<li>new 新创建</li>
+<li>runnable 可运行 一旦启用start方法,  线程则处于runnable状态 可运行分为 <ul>
+<li>正在运行</li>
+<li>没有运行 没有运行则可能是 以下三种状态的一种<ul>
+<li>blocked 阻塞 请求锁 得到锁后 变成可运行状态</li>
+<li>waiting 等待 等待通知 被通知后 变成可运行</li>
+<li>timed waiting 超时等待 等待通知 被通知或者超时后 变成可运行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>terminated 被终止 执行exits方法</li>
+</ul>
+<h3 id="getState方法"><a href="#getState方法" class="headerlink" title="getState方法"></a>getState方法</h3><p>获取一个线程的当前状态</p>
+<h3 id="被终止的线程"><a href="#被终止的线程" class="headerlink" title="被终止的线程"></a>被终止的线程</h3><ul>
+<li>原因有两种<ul>
+<li>因为run方法正常退出return而自然死亡</li>
+<li>因为一个没有捕获的异常throws终止了run方法而意外死亡<ul>
+<li>stop杀死一个线程的时候, 该方法抛出ThreadDeath错误对象异常, 由此杀死线程</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="join方法"><a href="#join方法" class="headerlink" title="join方法"></a>join方法</h3><p>等待指定线程终止, 可带参数, 指等待指定毫秒数</p>
+<h3 id="守护进程"><a href="#守护进程" class="headerlink" title="守护进程"></a>守护进程</h3><p>为其他线程提供服务, 比如ftp服务, 若所有进程中, 只有守护进程在运行, 虚拟机就会退出, 守护进程不应该去访问固有资源例如数据库, 因为守护进程随时可能被一个操作中断</p>
+<h3 id="竞争条件"><a href="#竞争条件" class="headerlink" title="竞争条件"></a>竞争条件</h3><p>两个或两个以上的线程需要共享同一个数据的存取, 则存在竞争条件</p>
+<h3 id="可重入锁RenntrantLock类"><a href="#可重入锁RenntrantLock类" class="headerlink" title="可重入锁RenntrantLock类"></a>可重入锁RenntrantLock类</h3><p>通过创建可重入锁的实力, 临界区的开始调用lock方法, 一般用try catch finally代码块限制临界区确保临界区的代码执行完之后, finally块需要释放锁unlock(), 可重入锁有一个对象持有数计数器, 用于锁的嵌套调用, 表明目前持有的对象数量, 当持有计数为0时, 线程释放锁</p>
+<p>可重入锁可以有多个条件对象, 根据条件对象来让线程进入条件的等待集中</p>
+<p>锁被释放的时候, 调用signalAll接触该条件的等待集中的所有线程的阻塞状态</p>
+<p>若调用signal方法, 该条件会随机选择一个线程 释放其阻塞状态 这种方法有风险 如果该线程不满足条件的话  其他被阻塞的线程就永远都不会再运行了, 就造成死锁的现象了 </p>
+<p>ReentrantLock的构造方法可以构造一个公平策略的可重入锁, 公平锁会优先选择等待时间最长的线程, 即便是这样, 如果线程调度器因为策略选择忽略这个线程, 即便这个线程等待了很长时间, 他也会被忽略, 不能确保完全公平</p>
+<h3 id="Synchronized内在锁-固有锁"><a href="#Synchronized内在锁-固有锁" class="headerlink" title="Synchronized内在锁 固有锁"></a>Synchronized内在锁 固有锁</h3><p>对象自带的内部所, 和lock不一样的是, 内部对象锁只可以有一个相关条件</p>
+<p>用wait方法添加一个线程到等待集中, 用notifyAll/ notify接触等待线程的阻塞状态, notify同样也是随机接触一个线程, 有死锁的风险</p>
+<h3 id="死锁的场景"><a href="#死锁的场景" class="headerlink" title="死锁的场景"></a>死锁的场景</h3><p>可重入锁或者同步对象锁 用signal或者notify随机唤醒一个线程, 导致死锁</p>
+<p>suspend方法挂起一个线程后, suspend是不会释放锁的, 若线程试图获取同一个锁, 程序会变死锁</p>
+<p>MySQL并发修改同一记录或封锁同一范围导致相互等待</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1022,218 +1260,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/05/06/Linux/Linux硬链接与软链接/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Icebearice">
-      <meta itemprop="description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Icebearice">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/06/Linux/Linux硬链接与软链接/" class="post-title-link" itemprop="url">Linux硬链接与软链接</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-             
-             
-             
-
-              <time title="创建时间：2019-05-06 14:48:04 / 修改时间：14:48:20" itemprop="dateCreated datePublished" datetime="2019-05-06T14:48:04+08:00">2019-05-06 14:48:04</time>
-            
-
-            
-              
-            <!--  old version
-              -->
-              <!-- new version -->
-                        
-            <span class="post-updated">
-                
-                  <span class="post-meta-divider">|</span>
-                  
-
-                  <span class="post-meta-item-icon">
-                    <i class="fa fa-calendar-check-o"></i>
-                  </span>
-                  
-                    <span class="post-meta-item-text">更新于</span>
-                
-              <time itemprop="dateUpdated" datetime="2019-05-06T14:48:20+08:00" content="2019-05-06">
-                2019-05-06 14:48:20
-              </time>
-            </span>
-          
-            
-          </span>
-
-
-          
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/06/Linux/Linux硬链接与软链接/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/06/Linux/Linux硬链接与软链接/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>转载自: <a href="https://www.cnblogs.com/crazylqy/p/5821105.html" target="_blank" rel="noopener">https://www.cnblogs.com/crazylqy/p/5821105.html</a></p>
-<p>Linux 系统中有<strong>软链接</strong>和<strong>硬链接</strong>两种特殊的“文件”。</p>
-<p><strong>软链接</strong>可以看作是<strong>Windows中的快捷方式</strong>，可以让你快速链接到目标档案或目录。</p>
-<p><strong>硬链接</strong>则透过文件系统的inode来产生新档名，而不是产生新档案。</p>
-<p>磁盘分区会被分为两个部分: Inode区 与 Data Block(实际数据放置在数据区域中)</p>
-<p>Inode是文件在文件系统中的唯一标识 访问一个文件的时候必须先找到并读取这个文件的Inode</p>
-<p>Inode里面存储了文件的很多重要参数, 其中唯一标识称为Inumber, 创建时间ctime, 修改时间mtime, 文件大小, 属主 归属的用户组, 读写权限, 数据所在的block号等信息</p>
-<p>磁盘分区会根据inode的数量进行分区, 比如文件数量很多而文件都很小, 则需要Inode的数量就会较多, 方便索引全部文件</p>
-<p>Inode不记录文件名, 文件名记录在目录文件的Block中</p>
-<p>硬链接: 多个档名对应同一个Inode, 借助Inode来产生新的档名, 从而产生新的档名链接</p>
-<p><strong>硬链接</strong></p>
-<p>命令：ln 多个档名对应同一个inode，硬链接只是在某个目录下新增一笔档名链 接到某个inode号码的关联记录而已。如果将上图中任何一个档名删除，档案的inode与block都还存在，依然还可以通过另一个档名来读取正确的档 案数据。此外，不论用哪一个档名来编辑，最终的结果都会写入相同的inode和block中，因此均能进行数据的修改。</p>
-<p><strong>软连接</strong></p>
-<p>命令：ln -s 软连接就是建立一个独立的文件，而这个文件会让数据的读取指向它link的那个档案的档名，由于只是作为<strong>指向的动作</strong>，所以当来源档案被删除之后，软连接的档案无法开启，因为找不到原始档名。连结档的内容只有档名，根据档名链接到正确的目录进一步取得目标档案的inode，最终就能够读取到正确的数据。如果目标档案的原始档名被删除了那么整个环节就进行不下去了。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1277,7 +1308,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">57</span>
+                    <span class="site-state-item-count">58</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1501,7 +1532,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共70.9k字</span>
+  <span class="post-count">博客全站共72k字</span>
 </div>
         
 <div class="busuanzi-count">

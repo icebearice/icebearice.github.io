@@ -161,7 +161,7 @@
 <meta property="og:site_name" content="Icebearice">
 <meta property="og:description" content="死锁死锁发生的情形 一个线程两次申请锁 两个线程互相申请对方的锁，但是对方都不释放锁  产生死锁的条件与破坏条件的方式 互斥：一个资源每次只能被一个进程使用 无法解决，互斥是设备的固有属性，有了互斥才能保证每个进程对资源的顺利占有使用  请求与保持：一个进程因请求资源而阻塞，对已获得的资源保持不放 要求进程一次性获取所有资源，保证进程的运行的顺利执行，效率较低  不剥夺：进程已获得的资源，在未使用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-04T02:32:59.000Z">
+<meta property="og:updated_time" content="2019-10-04T11:54:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Icebearice">
 <meta name="twitter:description" content="死锁死锁发生的情形 一个线程两次申请锁 两个线程互相申请对方的锁，但是对方都不释放锁  产生死锁的条件与破坏条件的方式 互斥：一个资源每次只能被一个进程使用 无法解决，互斥是设备的固有属性，有了互斥才能保证每个进程对资源的顺利占有使用  请求与保持：一个进程因请求资源而阻塞，对已获得的资源保持不放 要求进程一次性获取所有资源，保证进程的运行的顺利执行，效率较低  不剥夺：进程已获得的资源，在未使用">
@@ -318,7 +318,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">57</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">58</span></a>
 
   </li>
         
@@ -463,7 +463,7 @@
              
              
 
-              <time title="创建时间：2019-10-04 08:40:10 / 修改时间：10:32:59" itemprop="dateCreated datePublished" datetime="2019-10-04T08:40:10+08:00">2019-10-04 08:40:10</time>
+              <time title="创建时间：2019-10-04 08:40:10 / 修改时间：19:54:20" itemprop="dateCreated datePublished" datetime="2019-10-04T08:40:10+08:00">2019-10-04 08:40:10</time>
             
 
             
@@ -483,8 +483,8 @@
                   
                     <span class="post-meta-item-text">更新于</span>
                 
-              <time itemprop="dateUpdated" datetime="2019-10-04T10:32:59+08:00" content="2019-10-04">
-                2019-10-04 10:32:59
+              <time itemprop="dateUpdated" datetime="2019-10-04T19:54:20+08:00" content="2019-10-04">
+                2019-10-04 19:54:20
               </time>
             </span>
           
@@ -576,6 +576,11 @@
 <p><code>资源剥夺法和撤销进程法</code></p>
 </li>
 </ol>
+<h3 id="并发编程的挑战"><a href="#并发编程的挑战" class="headerlink" title="并发编程的挑战"></a>并发编程的挑战</h3><h4 id="并发编程的目的"><a href="#并发编程的目的" class="headerlink" title="并发编程的目的"></a>并发编程的目的</h4><p>为了让程序运行的更快，希望通过多线程执行任务让程序运行得更快，但会面临非常多的挑战，比如上下文切换问题、死锁问题，以及受限于硬件和软件的资源限制问题</p>
+<h4 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h4><p>任务从<code>保存</code>到<code>再次加载</code>的过程就是一次<code>上下文切换</code>，关键字：时间片，状态保存，状态再次加载</p>
+<p><code>单核处理器</code>也支持多线程执行代码，CPU通过给每个线程分配CPU时间片来实现这个机制。时间片是CPU分配给各个线程的时间，因为时间片非常短，所以CPU通过不停地切换线程执行，让我们感觉是多个线程在同时执行，时间片一般为几十毫秒</p>
+<p>CPU通过时间片分配算法来循环执行任务，当前任务执行一个时间片后会切换到下一个任务，切换前会保存上一个任务的状态，以便下次切换回这个任务，可以恢复原来的状态。所以任务从保存到再次加载的过程就是一次上下文切换</p>
+<h4 id="多线程（并发）就一定比串行要快吗"><a href="#多线程（并发）就一定比串行要快吗" class="headerlink" title="多线程（并发）就一定比串行要快吗"></a>多线程（并发）就一定比串行要快吗</h4><p>不一定，当<strong>并发执行操作未超过一定次数</strong>的时候，串行的执行速度是比并发要快的，因为并发执行需要频繁的<strong>创建线程</strong>与<strong>上下文切换</strong></p>
 
       
     </div>
@@ -693,7 +698,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">57</span>
+                    <span class="site-state-item-count">58</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -891,7 +896,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#死锁"><span class="nav-number">1.</span> <span class="nav-text">死锁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁发生的情形"><span class="nav-number">1.1.</span> <span class="nav-text">死锁发生的情形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#产生死锁的条件与破坏条件的方式"><span class="nav-number">1.2.</span> <span class="nav-text">产生死锁的条件与破坏条件的方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#处理死锁的四种方法"><span class="nav-number">1.3.</span> <span class="nav-text">处理死锁的四种方法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#死锁"><span class="nav-number">1.</span> <span class="nav-text">死锁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁发生的情形"><span class="nav-number">1.1.</span> <span class="nav-text">死锁发生的情形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#产生死锁的条件与破坏条件的方式"><span class="nav-number">1.2.</span> <span class="nav-text">产生死锁的条件与破坏条件的方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#处理死锁的四种方法"><span class="nav-number">1.3.</span> <span class="nav-text">处理死锁的四种方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并发编程的挑战"><span class="nav-number">2.</span> <span class="nav-text">并发编程的挑战</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#并发编程的目的"><span class="nav-number">2.1.</span> <span class="nav-text">并发编程的目的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#上下文切换"><span class="nav-number">2.2.</span> <span class="nav-text">上下文切换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多线程（并发）就一定比串行要快吗"><span class="nav-number">2.3.</span> <span class="nav-text">多线程（并发）就一定比串行要快吗</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -934,7 +939,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共70.9k字</span>
+  <span class="post-count">博客全站共72k字</span>
 </div>
         
 <div class="busuanzi-count">
