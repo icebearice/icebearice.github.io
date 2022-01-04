@@ -1,0 +1,2220 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/libs/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/libs/pace/pace-theme-flash.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_small.ico?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":true,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
+<meta name="keywords" content="后端开发">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Icebearice">
+<meta property="og:url" content="https://icebearice.gitee.io/page/15/index.html">
+<meta property="og:site_name" content="Icebearice">
+<meta property="og:description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Icebearice">
+<meta name="twitter:description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://icebearice.gitee.io/page/15/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Icebearice</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Icebearice</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">18</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">58</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+<a href="https://github.com/icebearice" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/03/19/学习日记/2019.3.19 问题集/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Icebearice">
+      <meta itemprop="description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Icebearice">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/19/学习日记/2019.3.19 问题集/" class="post-title-link" itemprop="url">2019.3.19 问题集</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-03-19 21:00:00" itemprop="dateCreated datePublished" datetime="2019-03-19T21:00:00+08:00">2019-03-19 21:00:00</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
+                2019-04-26 22:50:06
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习日记/" itemprop="url" rel="index"><span itemprop="name">学习日记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/03/19/学习日记/2019.3.19 问题集/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/19/学习日记/2019.3.19 问题集/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="2019-3-19-问题集"><a href="#2019-3-19-问题集" class="headerlink" title="2019.3.19 问题集"></a>2019.3.19 问题集</h1><h3 id="Spring的问题"><a href="#Spring的问题" class="headerlink" title="Spring的问题"></a>Spring的问题</h3><ol>
+<li><p>Bean</p>
+<ol>
+<li><p>作用域Scope</p>
+<p>Spring中Bean有<strong>五种scope</strong>，<strong>singleton</strong> <strong>prototype</strong> <strong>request</strong> <strong>session</strong> <strong>globalSession</strong>  </p>
+<ul>
+<li>singleton为默认值，IOC容器中仅存在一个Bean实例，Bean都以<strong>单例模式</strong>存在 </li>
+<li>prototype，在每次请求获取Bean的时候，都会<strong>创建一个新的实例</strong>，它在容器初始化的时候不会创建实例，采用的是<strong>延迟加载</strong>的形式注入Bean，当你<strong>使用**</strong>的时候<strong>，才会进行</strong>实例化<strong>，每次实例化获取的对象都</strong>不是同一个<strong> 就像BeanFactory的实例化模式 </strong>实例不唯一**,容器在初始化prototype作用域的Bean时,会将该Bean的生命周期全权交给客户端管理</li>
+<li>request，在每一次<strong>http请求</strong>时会创建一个实例，该实例仅在当前<strong>http</strong> <strong>request</strong>有效 </li>
+<li>session，在每一次<strong>http**</strong>请求<strong>时会创建一个实例，该实例仅在当前</strong>http<strong> </strong>session**有效 </li>
+<li>globalSession，全局Session，供<strong>不同的portlet</strong>共享，portlet好像是类似于servlet的Web组件</li>
+</ul>
+</li>
+<li><p>Spring Bean的生命周期</p>
+<ol>
+<li>Bean容器在配置文件中找到Bean的定义</li>
+<li>Bean容器利用Java Reflection api来创建一个Bean的实例</li>
+<li>Bean容器通过调用相应Loader方法来一一设置Bean，例如set名字、set属性、类加载器等等</li>
+<li>当定义了初始化init-method属性时，执行指定方法</li>
+<li>执行加载该Bean的对象的指定方法，就是加载这个Bean的对象，必定是要通过实例化该Bean进行某些过程性的操作</li>
+<li>当定义了销毁destroy-method时,执行指定方法</li>
+<li>执行destroy()方法,销毁Bean</li>
+</ol>
+</li>
+<li><p>Bean的实例化方式</p>
+<ol>
+<li>无参构造</li>
+<li>静态工厂实例化</li>
+<li>实例工厂实例化</li>
+</ol>
+</li>
+<li><p>Spring的属性注入</p>
+<ol>
+<li><p>构造方法属性注入</p>
+</li>
+<li><p>Set方法属性注入</p>
+<ol>
+<li><p>P名称空间的属性注入 引入p名称空间完成属性注入(2.5之后)</p>
+</li>
+<li><p>SPEL spring expression language Spring的表达式语言(3.0之后)</p>
+<p>就跟EL表达式的注入方式一样</p>
+</li>
+</ol>
+</li>
+<li><p>集合类属性注入</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>IOC介绍</p>
+<ol>
+<li><p>简单的IOC实现</p>
+<ol>
+<li>加载XML配置文件, 遍历其中的标签</li>
+<li>获取标签中的id和class属性, 加载class属性对应的类, 创建Bean</li>
+<li>遍历标签, 获取标签的属性值, 将属性值填充到Bean对象中</li>
+<li>将Bean注册到Bean容器中</li>
+</ol>
+</li>
+<li><p>原理</p>
+<ul>
+<li>将对象的创建权反转交给Spring Invension of Controll(控制反转)</li>
+</ul>
+</li>
+<li><p>产生原因 - 解耦</p>
+<p><img src="file:///C:\Users\16475\AppData\Local\Temp\ksohtml5680\wps1.jpg" alt="img"></p>
+<ol>
+<li>常规的impl实现类, 使接口与实现类有耦合, 为了更好的满足程序设计原则 - 开闭原则, 对外扩展开放, 对内修改关闭 在尽量不修改源程序的代码的情况下对程序进行拓展</li>
+<li>为了解耦, 引入工厂模式, 创建一个工厂类将所有的实现类整合起来, 这样一来, 想要对程序进行接口与实现类之前没有耦合, 有耦合的变成了工厂和实现类</li>
+</ol>
+</li>
+<li><p>依赖注入DI</p>
+<ul>
+<li>在IOC的环境下,Spring管理Bean的时候将Bean的依赖属性注入到Bean中</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>AOP</p>
+<ol>
+<li><p>定义</p>
+<ul>
+<li>面向切面编程 Aspect Oriented Programming</li>
+</ul>
+</li>
+<li>简单的AOP实现<ol>
+<li>JDK动态代理 - 只能对实现接口的类产生代理 - invoke</li>
+<li>Cglib动态代理 - 采用Javassist第三方代理技术, 没有实现类的接口也可以产生代理对象 - intercept</li>
+</ol>
+</li>
+<li><p>AOP技术优势在于:</p>
+<ul>
+<li>将核心关注点与横切关注点完全隔离</li>
+</ul>
+</li>
+<li>Spring AOP的面向切面的通知<ol>
+<li>前置通知: Before</li>
+<li>后置通知: After</li>
+<li>返回通知: After-returning</li>
+<li>异常通知: After-throwing</li>
+<li>环绕通知: Around</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>工厂模式</li>
+<li><p>工厂类</p>
+<ol>
+<li>BeanFactory是Spring的心脏，采用延迟加载的形式注入Bean，当使用某个Bean的时候，才会对该Bean进行实例化</li>
+<li>ApplicationContext是BeanFactory派生的接口，在初始化的时候就会一次性创建所有的Bean<ul>
+<li>BeanFactory需要在加载实例化的时候，才能发现Spring中的一些Bean配置问题，而ApplicationContext在初始化自身时就会进行检验</li>
+<li>ApplicationContext的不足就是占用内存空间，且Bean较多的时候，程序启动较慢</li>
+<li>ApplicationContext通过预加载实例Bean，使你不用等待实例的创建，从这个角度来讲可能比BeanFactory效率要更高</li>
+</ul>
+</li>
+<li>Application有两个实现类<ul>
+<li>ClassPathXmlApplicationContext 加载类路径下的配置文件</li>
+<li>FileSystemXmlApplicationContext 加载文件系统下的配置文件</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2018/12/30/项目/数据库分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Icebearice">
+      <meta itemprop="description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Icebearice">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/12/30/项目/数据库分析/" class="post-title-link" itemprop="url">数据库分析</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2018-12-30 21:56:51" itemprop="dateCreated datePublished" datetime="2018-12-30T21:56:51+08:00">2018-12-30 21:56:51</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
+                2019-04-26 22:50:06
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目/" itemprop="url" rel="index"><span itemprop="name">项目</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目/秒杀系统/" itemprop="url" rel="index"><span itemprop="name">秒杀系统</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/12/30/项目/数据库分析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/30/项目/数据库分析/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1 创建数据库</p>
+<p>2 使用数据库</p>
+<p>3 创建表</p>
+<p>秒杀库存表</p>
+<p>​    商品库存id seckill_id</p>
+<p>​    商品名称     name</p>
+<p>​    库存数量 number<code></code></p>
+<pre><code>秒杀开启时间 start_time
+</code></pre><p>​    秒杀结束时间 end_time</p>
+<p>​    创建时间 create_time</p>
+<p>​    主键 seckill_id</p>
+<p>​    索引 start_time end_time create_time</p>
+<p>​    engine    InnoDB</p>
+<p>​    自增从1000开始</p>
+<p>​    默认编码utf8</p>
+<p>​    注释 秒杀库存表</p>
+<p>秒杀成功明细表</p>
+<p>​    秒杀商品id seckill_id</p>
+<p>​    用户手机号 phone</p>
+<p>​    状态标识 state -1:无效 0:成功 1 重复秒杀</p>
+<p>​    创建时间 create_time</p>
+<p>​    联合主键 seckill_id phone</p>
+<p>​    索引    create_time</p>
+<p>​    引擎 InnoDB</p>
+<p>​    编码格式    utf8</p>
+<p>​    注释    秒杀成功明细表</p>
+<p>4 初始化数据</p>
+<p>​    insert </p>
+<p>​    name</p>
+<p>​    number</p>
+<p>​    start_time</p>
+<p>​    end_time</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2018/11/20/Maven/14.Maven-软件项目管理工具/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Icebearice">
+      <meta itemprop="description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Icebearice">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/11/20/Maven/14.Maven-软件项目管理工具/" class="post-title-link" itemprop="url">14 Maven-软件项目管理工具</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2018-11-20 21:03:10" itemprop="dateCreated datePublished" datetime="2018-11-20T21:03:10+08:00">2018-11-20 21:03:10</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
+                2019-04-26 22:50:06
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Maven/" itemprop="url" rel="index"><span itemprop="name">Maven</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/11/20/Maven/14.Maven-软件项目管理工具/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/20/Maven/14.Maven-软件项目管理工具/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Maven-软件项目管理工具"><a href="#Maven-软件项目管理工具" class="headerlink" title="Maven-软件项目管理工具"></a>Maven-软件项目管理工具</h1><ul>
+<li><h3 id="目录文件夹介绍"><a href="#目录文件夹介绍" class="headerlink" title="目录文件夹介绍"></a>目录文件夹介绍</h3><ul>
+<li>bin目录包含mvn的运行脚本 m2.conf-配置文件</li>
+<li>boot目录包含一个类加载器的框架</li>
+<li>conf目录包含一些配置文件</li>
+<li>lib目录包含自身的一些类库</li>
+</ul>
+</li>
+<li><h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><ul>
+<li>M2_HOME对应maven目录</li>
+<li>Path配置bin目录</li>
+<li>测试：shell中 mvn -v 查看版本</li>
+</ul>
+</li>
+<li><h3 id="Pom-xml配置"><a href="#Pom-xml配置" class="headerlink" title="Pom.xml配置"></a>Pom.xml配置</h3><ul>
+<li>groupId是项目的包名</li>
+<li>artifactID是项目模块名，即项目名</li>
+<li>version是版本好，初始我们会命名为1.0-SNAPSHOT<ul>
+<li>SNAPSHOT为快照版本的意思，在一般开发的时候，我们可以频繁的发布SNAPSHOT版本，以便让其他项目能实时的使用到最新的功能做联调；当版本趋于稳定时，再发一个正式版本，供正式使用</li>
+<li>在做正式发布的时候，确保当前项目的依赖项中不包含对任何SNAPSHOT版本的依赖，保证正式版本的稳定性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="Maven约定好的目录结构"><a href="#Maven约定好的目录结构" class="headerlink" title="Maven约定好的目录结构"></a>Maven约定好的目录结构</h3><ul>
+<li>src<ul>
+<li>main<ul>
+<li>java<ul>
+<li>package</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>test<ul>
+<li>java<ul>
+<li>package</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>resources</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="常见命令"><a href="#常见命令" class="headerlink" title="常见命令"></a>常见命令</h3><ul>
+<li>compile 编译</li>
+<li>test 测试</li>
+<li>package 打包</li>
+<li>clean 删除target maven所生成的目标文件</li>
+<li>install 安装jar包到本地仓库中</li>
+</ul>
+</li>
+<li><h3 id="archetype插件"><a href="#archetype插件" class="headerlink" title="archetype插件"></a>archetype插件</h3><ul>
+<li><p>用于创建符合maven规定的目录骨架</p>
+</li>
+<li><p>快速创建maven骨架</p>
+<ul>
+<li><p>archetype:generate 按照提示进行选择</p>
+</li>
+<li><p>archetype:generate -DgroupID=组织名，公司网址的反写+项目名</p>
+<p>​                    -DartifactId=项目名-模块名</p>
+<p>​                    -Dversion=版本号</p>
+<p>​                    -Dpackage=代码所存在的包名</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="maven中的坐标和仓库"><a href="#maven中的坐标和仓库" class="headerlink" title="maven中的坐标和仓库"></a>maven中的坐标和仓库</h3><ul>
+<li>groupId和artifactId还有version就是坐标</li>
+<li>仓库<ul>
+<li>本地仓库</li>
+<li>远程仓库</li>
+<li>中央仓库-全球默认仓库</li>
+<li>镜像仓库-国内的镜像仓库 解决无法访问外网问题</li>
+</ul>
+</li>
+<li>更改仓库位置 conf.xml改变localReposities</li>
+</ul>
+</li>
+<li><h3 id="Maven插件安装"><a href="#Maven插件安装" class="headerlink" title="Maven插件安装"></a>Maven插件安装</h3></li>
+<li><h3 id="完整的项目构建过程"><a href="#完整的项目构建过程" class="headerlink" title="完整的项目构建过程"></a>完整的项目构建过程</h3><ul>
+<li>清理</li>
+<li>编译</li>
+<li>单元测试<ul>
+<li>针对程序模块（软件设计的最小单元）来进行正确性检验的测试工作。程序单元是应用和最小的可测试部件，在编写程序时可能要进行很多次单元测试，以证实程序达到软件规格书要求的工作目标</li>
+</ul>
+</li>
+<li>打包</li>
+<li>集成测试<ul>
+<li>又称组装测试，即对程序模块采用一次性或增值方式组装起来，对系统的接口进行正确性的检验</li>
+</ul>
+</li>
+<li>验证<ul>
+<li>功能没问题了，我们需要验证结果的正确性</li>
+</ul>
+</li>
+<li>部署</li>
+</ul>
+</li>
+<li><h3 id="maven生命周期"><a href="#maven生命周期" class="headerlink" title="maven生命周期"></a>maven生命周期</h3><ul>
+<li>clean 清理项目<ul>
+<li>pre-clean 执行清理前的工作</li>
+<li>clean 清理上一次构建生成的所有文件</li>
+<li>post-clean 执行清理后的文件</li>
+</ul>
+</li>
+<li>default 构建项目-核心<ul>
+<li>compile</li>
+<li>test</li>
+<li>package</li>
+<li>install</li>
+</ul>
+</li>
+<li>site 生成项目站点<ul>
+<li>pre-site 在生成项目站点前要完成的工作</li>
+<li>site 生成项目的站点文档</li>
+<li>post-site 在生成项目站点后要完成的工作</li>
+<li>site-deploy 发布生成的站点到服务器是上</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="plugins与dependencies的区别"><a href="#plugins与dependencies的区别" class="headerlink" title="plugins与dependencies的区别"></a>plugins与dependencies的区别</h3><ul>
+<li>dependency：编译/运行时需要的，运行时开发都需要用到的jar包，比如项目中需要一个Json的jar包，就需要添加一个依赖，这个依赖在项目运行时也需要，因此在项目打包时需要把这些依赖也打包进项目里</li>
+<li>plugin：编译时需要，在项目开发的时候需要，在项目运行时不需要，因此在项目开发完成后不需要把插件打包进项目中，比如有个可以在编译时需要某些调节参数的插件，编译结束后就没用了，所以项目打包时并不需要把插件加进去</li>
+</ul>
+</li>
+<li><h3 id="pom-xml解析"><a href="#pom-xml解析" class="headerlink" title="pom.xml解析"></a>pom.xml解析</h3><ul>
+<li><h4 id="坐标信息-（前三必要）"><a href="#坐标信息-（前三必要）" class="headerlink" title="坐标信息-（前三必要）"></a>坐标信息-（前三必要）</h4><ul>
+<li><strong>groupId 反写公司网址+项目名</strong></li>
+<li><strong>artifactId 项目名+模块名</strong></li>
+<li><strong>version 版本号</strong><ul>
+<li>第一位-大版本号 第二位-分支版本号 第三位-小版本号 0.0.1</li>
+<li>snapshot-快照版本</li>
+<li>alpha-内部测试 第一版本 内测</li>
+<li>beta-公测 第二版本 公测</li>
+<li>release-稳定 稳定版</li>
+<li>GA(General Availability)-正式发布 </li>
+</ul>
+</li>
+<li>packaging-项目描述名</li>
+<li>name-项目描述名</li>
+<li>url-项目地址</li>
+<li>description-项目描述</li>
+</ul>
+</li>
+<li><p>如何指定依赖</p>
+<ul>
+<li>指定坐标信息</li>
+<li>指定范围-scope</li>
+<li>设置依赖是否可选-默认为false</li>
+<li>排除依赖传递列表-exclusions、exclusion</li>
+</ul>
+</li>
+<li><p>依赖管理-dependencyManagement</p>
+</li>
+<li><p>build-构建</p>
+<ul>
+<li>plugins</li>
+</ul>
+</li>
+<li><p>parent-子模块对父模块的继承</p>
+</li>
+<li><p>modules-多个模块</p>
+</li>
+</ul>
+</li>
+<li><h3 id="依赖范围-scope"><a href="#依赖范围-scope" class="headerlink" title="依赖范围-scope"></a>依赖范围-scope</h3><ul>
+<li>compile<strong>（编译范围）</strong>-默认的范围，编译测试运行都有效</li>
+<li>provided<strong>（已提供范围）</strong>-在编译和测试时有效（打包的时候不会被包进去，别的web container会提供）</li>
+<li>runtime<strong>（运行时范围）</strong>-在测试和运行时有效</li>
+<li>test<strong>（测试范围）</strong>-只在测试时有效</li>
+<li>system<strong>（系统范围）</strong>-与本机系统相关联，可移植性差</li>
+<li>import-导入的范围，它只是用在dependencyManagement中表示从其他的pom中导入dependency的配置</li>
+</ul>
+</li>
+<li><h3 id="maven依赖传递-dependencys"><a href="#maven依赖传递-dependencys" class="headerlink" title="maven依赖传递-dependencys"></a>maven依赖传递-dependencys</h3><ul>
+<li>将子依赖包clean后install打包后到本地仓库 后 才可进行 依赖传递</li>
+<li>排除依赖-exclusions</li>
+</ul>
+</li>
+<li><h3 id="依赖冲突"><a href="#依赖冲突" class="headerlink" title="依赖冲突"></a>依赖冲突</h3><ul>
+<li>1 短路优先-优先解析路径短的版本</li>
+<li>2 先声明先优先-同长度路径情况</li>
+</ul>
+</li>
+<li><h3 id="聚合-modules"><a href="#聚合-modules" class="headerlink" title="聚合-modules"></a>聚合-modules</h3><ul>
+<li>如果我们想要一次构建两个或多个项目，而不是到两到三个模块下分别执行mvn命令，就会用到聚合</li>
+</ul>
+</li>
+<li><h3 id="继承-denpendencyManagement"><a href="#继承-denpendencyManagement" class="headerlink" title="继承-denpendencyManagement"></a>继承-denpendencyManagement</h3><ul>
+<li>解决重复问题</li>
+<li>设置父类依赖 denpendencyManagement  使用该标签 该标签中的依赖不会在该项目中运行</li>
+<li>子类继承依赖 parent标签 继承父类依赖</li>
+</ul>
+</li>
+<li><h3 id="使用maven构建web项目"><a href="#使用maven构建web项目" class="headerlink" title="使用maven构建web项目"></a>使用maven构建web项目</h3><ul>
+<li>构建的是 webapp </li>
+<li>为什么springboot是quickstart </li>
+</ul>
+</li>
+<li>添加servlet依赖</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="Icebearice">
+            
+              <p class="site-author-name" itemprop="name">Icebearice</p>
+              <div class="site-description motion-element" itemprop="description">后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">58</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/164751245" title="164751245 &rarr; 164751245"><i class="fa fa-fw fa-qq"></i>164751245</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/icebearice" title="GitHub &rarr; https://github.com/icebearice" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/icebearice@qq.com" title="icebearice@qq.com &rarr; icebearice@qq.com"><i class="fa fa-fw fa-envelope"></i>icebearice@qq.com</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.cnblogs.com/Elvis827" title="博客园 &rarr; https://www.cnblogs.com/Elvis827" rel="noopener" target="_blank"><i class="fa fa-fw fa-vk"></i>博客园</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2022</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Icebearice</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共72k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="/js/src/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: true,
+    appId: 'oaY0uDqkCsuX94AxTtnV6scO-gzGzoHsz',
+    appKey: 'HKU5SJPAd8KyYqk6Q8fdArL5',
+    placeholder: '写了评论, offer还会远吗? ----记得填写邮箱哦~如果可以填写你的网站互相参考就更好啦',
+    avatar: 'retro',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+  //增加以下六行代码去除 power by valine
+    var infoEle = document.querySelector('#comments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+      infoEle.childNodes.forEach(function(item) {
+        item.parentNode.removeChild(item);
+      });
+    }
+</script>
+
+
+
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<!-- 页面点击小红心 -->
+<!-- <script type="text/javascript" src="/js/src/click.js"></script>-->
+</body>
+</html>

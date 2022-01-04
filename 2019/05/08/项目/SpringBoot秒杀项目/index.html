@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/libs/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/libs/pace/pace-theme-flash.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_small.ico?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":true,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="本文为关于练习Java项目写下的相关笔记，涉及到SpringBoot、Tomcat云端部署、线程池优化、分布式Nginx、分布式token扩展、缓存系列Redis、本地缓存、lua缓存、cdn优化、令牌与RocketMQ消息队列实现流量削峰、JMeter压力测试等知识体系，因为是练习项目，笔记内容可能比较混杂，我会遇到问题不断的延伸，所以才有了这么一份总结">
+<meta name="keywords" content="notFinished">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot秒杀项目(更新中……未完结)">
+<meta property="og:url" content="https://icebearice.gitee.io/2019/05/08/项目/SpringBoot秒杀项目/index.html">
+<meta property="og:site_name" content="Icebearice">
+<meta property="og:description" content="本文为关于练习Java项目写下的相关笔记，涉及到SpringBoot、Tomcat云端部署、线程池优化、分布式Nginx、分布式token扩展、缓存系列Redis、本地缓存、lua缓存、cdn优化、令牌与RocketMQ消息队列实现流量削峰、JMeter压力测试等知识体系，因为是练习项目，笔记内容可能比较混杂，我会遇到问题不断的延伸，所以才有了这么一份总结">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://icebearice.gitee.io/2019/05/08/项目/SpringBoot秒杀项目/spring-boot.png">
+<meta property="og:image" content="https://icebearice.gitee.io/2019/05/08/项目/SpringBoot秒杀项目/image-20190909160722417.png">
+<meta property="og:image" content="https://icebearice.gitee.io/2019/05/08/项目/SpringBoot秒杀项目/image-20190909160817443.png">
+<meta property="og:image" content="https://icebearice.gitee.io/2019/05/08/项目/SpringBoot秒杀项目/Center-20190909162327048.png">
+<meta property="og:updated_time" content="2019-08-09T15:42:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SpringBoot秒杀项目(更新中……未完结)">
+<meta name="twitter:description" content="本文为关于练习Java项目写下的相关笔记，涉及到SpringBoot、Tomcat云端部署、线程池优化、分布式Nginx、分布式token扩展、缓存系列Redis、本地缓存、lua缓存、cdn优化、令牌与RocketMQ消息队列实现流量削峰、JMeter压力测试等知识体系，因为是练习项目，笔记内容可能比较混杂，我会遇到问题不断的延伸，所以才有了这么一份总结">
+<meta name="twitter:image" content="https://icebearice.gitee.io/2019/05/08/项目/SpringBoot秒杀项目/spring-boot.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://icebearice.gitee.io/2019/05/08/项目/SpringBoot秒杀项目/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>SpringBoot秒杀项目(更新中……未完结) | Icebearice</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Icebearice</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">18</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">58</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+<a href="https://github.com/icebearice" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/05/08/项目/SpringBoot秒杀项目/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Icebearice">
+      <meta itemprop="description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Icebearice">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SpringBoot秒杀项目(更新中……未完结)
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-05-08 23:42:14" itemprop="dateCreated datePublished" datetime="2019-05-08T23:42:14+08:00">2019-05-08 23:42:14</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-08-09 23:42:14" itemprop="dateModified" datetime="2019-08-09T23:42:14+08:00">2019-08-09</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-08-09T23:42:14+08:00" content="2019-08-09">
+                2019-08-09 23:42:14
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/notFinished/" itemprop="url" rel="index"><span itemprop="name">notFinished</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/08/项目/SpringBoot秒杀项目/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/08/项目/SpringBoot秒杀项目/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/2019/05/08/项目/SpringBoot秒杀项目/spring-boot.png" alt="âSpringbootâçå¾çæç´¢ç»æ"></p>
+<div class="note success">
+            <p>本文为关于练习Java项目写下的相关笔记，涉及到SpringBoot、Tomcat云端部署、线程池优化、分布式Nginx、分布式token扩展、缓存系列Redis、本地缓存、lua缓存、cdn优化、令牌与RocketMQ消息队列实现流量削峰、JMeter压力测试等知识体系，因为是练习项目，笔记内容可能比较混杂，我会遇到问题不断的延伸，所以才有了这么一份总结</p>
+          </div>
+<h3 id="两种archetype-quickstart和webapp的区别"><a href="#两种archetype-quickstart和webapp的区别" class="headerlink" title="两种archetype quickstart和webapp的区别"></a>两种<code>archetype</code> <code>quickstart</code>和<code>webapp</code>的区别</h3><p><code>archetype</code>是骨架的意思，<code>maven</code>为我们开发制定好了一份<code>项目的原始模版</code>，我们可以在<code>原始模版</code>的<code>基础</code>上，进行<code>扩展</code>与<code>延伸</code>。</p>
+<p>maven有提供各种各样的<code>模版</code>，这里只讲<code>quickstart</code>和<code>webapp</code>的区别</p>
+<ol>
+<li><code>maven-archetype-quickstart</code></li>
+<li><code>maven-archetype-webapp</code></li>
+</ol>
+<a id="more"></a>
+<p><code>maven</code>配置路径如下，我用的是自带的<code>maven3</code>，仓库和配置文件的位置比较奇葩，请勿模仿，要放就放一个地方：</p>
+<p><img src="/2019/05/08/项目/SpringBoot秒杀项目/image-20190909160722417.png" alt="image-20190909160722417"></p>
+<h5 id="区别-项目结构不同"><a href="#区别-项目结构不同" class="headerlink" title="区别:项目结构不同"></a>区别:项目结构不同</h5><p><code>quickstart</code>的项目结构图</p>
+<p><img src="/2019/05/08/项目/SpringBoot秒杀项目/image-20190909160817443.png" alt="image-20190909160817443"></p>
+<p>基本内容包括：</p>
+<ol>
+<li><code>一个包含junit的依赖生命的pom.xml</code></li>
+<li><code>src/main/java主代码目录及一个名为App的类</code></li>
+<li><code>src/test/java测试代码目录及一个名为AppTest的测试用例</code></li>
+</ol>
+<p><code>webapp</code>的项目结构图</p>
+<p><img src="/2019/05/08/项目/SpringBoot秒杀项目/Center-20190909162327048.png" alt="img"></p>
+<p>基本内容包括：</p>
+<ol>
+<li><code>一个packaging为war且带有junit依赖声明的pom.xml</code></li>
+<li><code>src/main/webapp/目录</code></li>
+<li><code>src/main/webapp/index.jsp文件</code></li>
+<li><code>src/main/webapp/WEB-INF/web.xml文件</code></li>
+</ol>
+<h5 id="为什么会有这样的结构的区别呢"><a href="#为什么会有这样的结构的区别呢" class="headerlink" title="为什么会有这样的结构的区别呢"></a>为什么会有这样的结构的区别呢</h5><p>其实两个骨架除了文件目录结构上的区别外，区别就是<code>quickstart</code>已经将<code>SpringBoot</code>的配置文件<code>application.properties</code>给创建好了，不需要我们额外的去创建该配置文件，是传统的<code>webapp</code>向<code>SpringBoot</code>的一个转型，为了<code>SpringBoot</code>去制定的一个<code>Archetype</code></p>
+<p>quickstart创建的是以jar包的方式，提供一个对外的统一输出</p>
+<p>原来的webapp创建的是以war包的方式，部署在Tomcat或者JBoss这种J2EE的这种容器里面</p>
+<h4 id="Building-a-RESFul-Web-Service"><a href="#Building-a-RESFul-Web-Service" class="headerlink" title="Building a RESFul Web Service"></a>Building a RESFul Web Service</h4><ol>
+<li>引入对应的pom文件的spring start 依赖<ol>
+<li>Spring-boot-starter-parent 指定父pom</li>
+<li>Spring-boot-starter-web 依赖关系如下<ol>
+<li>maven 支持 jar</li>
+<li>logging jar</li>
+<li>tomcat jar</li>
+<li>web jar</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>groupId和artifactId和version<ol>
+<li>请看maven篇</li>
+</ol>
+</li>
+<li>emmm 导包过程中 突然想起一道笔试题 <ol>
+<li>在import语句上只可以有注释<ol>
+<li>还可以有包名 我是猪吧 🐷</li>
+</ol>
+</li>
+<li>8090端口被ssr占用</li>
+<li>本地仓库老是无法更新索引 找个机会 把他弄成nexus的本地镜像仓库 现在先凑合着用 好</li>
+<li>需要关注pom.xml的结构</li>
+</ol>
+</li>
+</ol>
+<h4 id="EnableAutoConfiguration"><a href="#EnableAutoConfiguration" class="headerlink" title="@EnableAutoConfiguration"></a>@EnableAutoConfiguration</h4><blockquote>
+<p>启用 Spring 应用程序上下文的自动配置，试图猜测和配置您可能需要的bean。自动配置类通常采用基于你的 classpath 和已经定义的 beans 对象进行应用。<br>被 @EnableAutoConfiguration 注解的类所在的包有特定的意义，并且作为默认配置使用。例如，当扫描 <a href="https://github.com/entity" target="_blank" rel="noopener">@entity</a>类的时候它将本使用。通常推荐将 @EnableAutoConfiguration 配置在 root 包下，这样所有的子包、类都可以被查找到。</p>
+</blockquote>
+<blockquote>
+<p>Auto-configuration类是常规的 Spring 配置 Bean。它们使用的是 SpringFactoriesLoader 机制（以 EnableAutoConfiguration 类路径为 key）。通常 auto-configuration beans 是 <a href="https://github.com/conditional" target="_blank" rel="noopener">@conditional</a> beans（在大多数情况下配合 @ConditionalOnClass 和 @ConditionalOnMissingBean 注解进行使用）。</p>
+</blockquote>
+<p>密码和用户的info信息是分开存储的</p>
+<p>密码采用encrpt加密方式加密</p>
+<p>@RestController注解相当于@ResponseBody ＋ @Controller合在一起的作用。</p>
+<p>找个机会看看@Controller是怎么实现的</p>
+<p>dao层中的UserDO和UserPasswordDO（DO-DataObject）仅仅只是 用来mapper映射的数据传输模型</p>
+<p>真正被作为业务逻辑处理的其实是在service层的model层 它会汇集所有的来自dao不同的数据 属于同一个对象</p>
+<p>就像info的password是属于一个对象的 但是却是来自不同的表的</p>
+<h4 id="添加-ResponseBody-与不添加的区别"><a href="#添加-ResponseBody-与不添加的区别" class="headerlink" title="添加@ResponseBody 与不添加的区别"></a>添加@ResponseBody 与不添加的区别</h4><p>添加了之后, 返回的json 数据会直接被添加到 http response body(响应体) 中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/manage/login"</span>)</span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Student <span class="title">login</span><span class="params">()</span></span>&#123;</span><br><span class="line">		Student student = <span class="keyword">new</span> Student();</span><br><span class="line">  	student.setName(<span class="string">"张三"</span>);</span><br><span class="line">  	student.setId(<span class="number">1</span>);</span><br><span class="line">  	<span class="keyword">return</span> Student;	<span class="comment">// 返回的是 Student 转换成的 json 形式的数据 并且由于 ResponseBody 的注解存在</span></span><br><span class="line">  									<span class="comment">// 将 json形式的数据 直接写入到 HTTP Response Body 即响应体中</span></span><br><span class="line">  									<span class="comment">// 如果不添加 @ResponseBody 的话, 相当于返回的 url 为空, 页面的 url 不变</span></span><br><span class="line">  									<span class="comment">// 在 SpringBoot 中返回404</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>未添加的话, 将会根据返回的 String 形式的 url 进行跳转</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/manage/login"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">login</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"/admin/login"</span>;	<span class="comment">// 返回的是 String 形式的 url, 根据对应的 url 跳转请求</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>找机会研究一下 common-lang3</p>
+<p>mapper.insertSelective 会对参数进行判空 如未 null 则不添加该语句的 insert , 完全依赖于数据库的默认值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keyProperty=&quot;id&quot; useGeneratedKeys=&quot;true&quot;</span><br></pre></td></tr></table></figure>
+<p>将自增 id 取出, 后赋值给对应的 userModel 的 id, 自增的 id 被取出, 赋值给对应的对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@CrossOrigin</span>(allowCredentials = <span class="string">"true"</span>, allowedHeaders = <span class="string">"*"</span>)</span><br><span class="line"><span class="comment">// 解决跨域问题</span></span><br><span class="line">ajax 中:        xhrFields:&#123;withCredentials:<span class="keyword">true</span>&#125;,</span><br></pre></td></tr></table></figure>
+<h4 id="RequestMapping注解中consumes与produces的区别"><a href="#RequestMapping注解中consumes与produces的区别" class="headerlink" title="RequestMapping注解中consumes与produces的区别"></a>RequestMapping注解中consumes与produces的区别</h4><p>consumes - 消费者, 限制 HTTP Header 里的 ContentType, 客户端(即用户)可消费当前服务端(即服务器)的服务, 只能以 对应格式 进行消费, 就比如我只接收 application/json 不接收 application/xml, 就好像现在的一些不良商铺, 只接收支付宝和微信转账, 不接收现金, 要知道, 不接收现金是犯中华人民共和国人民币法的第三条法律哦!</p>
+<p>produces - 生产者, 限制  HTTP Header 里的 Accpet, 用来告诉客户端, 我只生产 对应格式 的消费对象, 我只会传给前端指定的 格式的数据</p>
+<p>那这两个注解有什么用呢? 如果不设置的话, 好像这个注解也是可以使用的, 你不需要去指定格式类型</p>
+<p>使用 @RequestMapping 注解的 produces 和 consumes 这两个元素来缩小请求映射类型的范围, 提高请求的处理的效率, 并可以限制开发时候的数据格式类型统一, 避免前后端传输的数据不是一种类型的, 但是却始终可以正常运行对应的数据格式, 算是一种规范化吧</p>
+<p>hibernate-validator 好东西</p>
+<p>如果一个service有多个实现, 那autowired是怎么实现自动注入的呢? 如何判断要注入的是哪一个impl呢?</p>
+<p><a href="https://blog.csdn.net/caidingnu/article/details/100906554" target="_blank" rel="noopener">https://blog.csdn.net/caidingnu/article/details/100906554</a></p>
+<p>LocalDateTime Java8 ?</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LocalDateTime now = LocalDateTime.now();</span><br><span class="line">now.format(DateTimeFormatter.ISO_DATE);</span><br></pre></td></tr></table></figure>
+<p>Spring.mvc.throw-exception-if-no-handler-found=true</p>
+<p>Spring.resources.add-mappings=false</p>
+<p>处理未处理异常 使其跳转后 可自定义404页面</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 捕获所有的异常类</span></span><br><span class="line"><span class="meta">@ControllerAdvice</span></span><br></pre></td></tr></table></figure>
+<h4 id="项目源代码已经部署完成-新的目标"><a href="#项目源代码已经部署完成-新的目标" class="headerlink" title="项目源代码已经部署完成, 新的目标"></a>项目源代码已经部署完成, 新的目标</h4><ol>
+<li>项目云端部署</li>
+<li>jmeter性能yace</li>
+<li>如何发现系统瓶颈问题</li>
+</ol>
+<h4 id="JMeter性能压力测试"><a href="#JMeter性能压力测试" class="headerlink" title="JMeter性能压力测试"></a>JMeter性能压力测试</h4><p>我们的压力测试针对的接口是秒杀商品详情页的接口 针对起进行高并发性能压测</p>
+<p>通过jmeter工具设置线程组同时进行线程的数量，同时发送http请求10执行100次 循环执行15次，结果树和聚合报告</p>
+<p>聚合报告可以看出</p>
+<p>pstree -p | wc -l 命令 查看所有正在执行的java程序并发的线程总数 看看最高达到多少的线程值</p>
+<p>通过top -H  线程数量大概在33 到 43 就上不去了</p>
+<h4 id="线程数量上不去的原因"><a href="#线程数量上不去的原因" class="headerlink" title="线程数量上不去的原因"></a>线程数量上不去的原因</h4><p>内嵌Tomcat配置</p>
+<p>server.tomcat.accept-count: 等待队列长度 默认100</p>
+<p>server.tomcat.max-connections: 最大可被连接数，默认为10000</p>
+<p>server.tomcat.max-threads：最大可工作线程数，默认为200</p>
+<p>server.tomcat.min-spare-threads：最小工作线程数，默认为10</p>
+<p>默认配置下，连接超过10000后出现拒绝连接情况</p>
+<p>默认配置下，触发的请求超过200+100后拒绝处理</p>
+<p>我的电脑是四核八线程的  最大开了800的线程</p>
+<p>docker容器间的连接 centos 容器和mysql容器的连接 通过link 进行连接</p>
+<p>现在有一种比较新的方式 docker官方文档也是推荐大家去使用的  叫什么 容器网络的形式 还没去用过 有打算去试试看  既然叫网络 那当然是一种容器间连接的一种管理 肯定比link要方便许多 而我折腾的那一些 还可以用link支撑的来 连一下mysql redis还是可以的</p>
+<p>上去了 变成472了 线程调度数 4核cpu 8G 内存 大概 800～1000以上的线程数</p>
+<p>定制tomvat spring容器中的 webconfiguration </p>
+<p>定制keepalivetimeout 多少毫秒后不响应断开连接</p>
+<p>maxKeepAliveRequest 多少次请求后keepalive断开失效 保证客户使用服务高并发的情况下 保证服务的正常运行</p>
+<p>等待队列长度：队列做缓存池，不能设置过长，会消耗内存，出对入队也会消耗cpu</p>
+<p>这种情况下，需要添加服务器</p>
+<p>sql中 查询消耗时间的话 主键查询可能是10毫秒 唯一索引是10～100毫秒 非索引的 100～1000毫秒</p>
+<p>更新操作也是也是</p>
+<p>插入操作的话是 跟配置有关 还没去试过 有机会会试一下 </p>
+<p>nginx 命令 -t -s reload</p>
+<p>阿里云 按小时计费的服务器</p>
+<p>nginx负载均衡 配置服务器的权重 upstream配置权重 weight为1</p>
+<p>高性能的原因</p>
+<p>1 epoll多路复用</p>
+<p>2 masterworker</p>
+<p>3 协程    依附于线程 切换开销小 遇阻塞归还执行权 代码同步 无需加锁</p>
+<h4 id="分布式会话token"><a href="#分布式会话token" class="headerlink" title="分布式会话token"></a>分布式会话token</h4><p>登陆凭证 存到redis中 缓解登录时的 高并发的压力 </p>
+<p>1 生成登陆凭证uuid</p>
+<p>2 简历用户与登陆凭证之间的联系  绑定在一起  一起存到 redis中 以聚合的 形式 对象聚合</p>
+<h4 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h4><p>Redis缓存的是商品详情 仅仅只是模拟集群</p>
+<p>理论上的话 redis有两种 我们可以 设置哨兵模式的 随时心跳机制检测 redis是否挂掉 挂掉的话就转到备用的redis上去</p>
+<p>然后在用集群的形式 部分redis用于 get 部分用于set</p>
+<p>哨兵和集群的形式相结合 形成一种分布式集群的redis机制</p>
+<h4 id="如何避免脏读的"><a href="#如何避免脏读的" class="headerlink" title="如何避免脏读的"></a>如何避免脏读的</h4><p>事务管理 减之后的理应库存值与实际库存值做比较 </p>
+<h4 id="Guava-本地缓存"><a href="#Guava-本地缓存" class="headerlink" title="Guava 本地缓存"></a>Guava 本地缓存</h4><p>存放对象的热点数据 减少redis 的压力 填充本地缓存 本地缓存是存在内存中的 需要一定的容量上限机制与淘汰策略防止内存溢出的情况</p>
+<h4 id="Lua缓存工具"><a href="#Lua缓存工具" class="headerlink" title="Lua缓存工具"></a>Lua缓存工具</h4><p> 这时候需要lua作为文件的缓存工具 用于读取文件</p>
+<p>1 基于协程编程</p>
+<p>2 应该是存在本地的</p>
+<h4 id="异步同步数据库"><a href="#异步同步数据库" class="headerlink" title="异步同步数据库"></a>异步同步数据库</h4><p>1 活动发布同步库存进缓存</p>
+<p>2 下单交易减缓存库存</p>
+<p>3 异步消息扣减数据库内库存</p>
+<h4 id="RokketMQ原理"><a href="#RokketMQ原理" class="headerlink" title="RokketMQ原理"></a>RokketMQ原理</h4><p>1 broker 突破点 是因为 topic  由此依附而生的 消息队列  从而进行对应的消费队列</p>
+<p>2 producer 发现broker 针对broker。处理 生成 consumer </p>
+<p>3 解耦 限流 削峰 我们可以通过设置只接收5000个请求，不再允许有多的请求，超过的请求将不处理或返回下单失败，</p>
+<p>这个过程中，将订单系统与库存系统进行了解耦，本来的下订单，是与减库存，绑在一起的，有了消息队列之后，下订单和减库存的中间多了个消息队列，下订单的请求将会到达消息队列，而减库存的服务去订阅消息队列中的服务，请求在消息队列中，实现了限流与削峰的机制，防止服务器由于流量过大而崩溃</p>
+<h3 id="项目面试总结"><a href="#项目面试总结" class="headerlink" title="项目面试总结"></a>项目面试总结</h3><h5 id="秒杀过程："><a href="#秒杀过程：" class="headerlink" title="秒杀过程："></a>秒杀过程：</h5><p>1 检查用户是否进行登录，未登陆的话，则提示未登录，跳转至登录页面</p>
+<p>2 登陆后，跳转至商品列表页</p>
+<p>3 在商品列表页点击，点击想要购买的商品，跳转至商品详情页</p>
+<p>4 1 若现在处于商品秒杀阶段 则商品开放购买接口，实现秒杀</p>
+<p>   2 若现在未处于商品秒杀阶段 则不开放购买接口，商品售卖倒计时</p>
+<p>5 商品被点击购买后，若购买成功，则秒杀完成；购买失败，则弹窗购买失败</p>
+<p>秒杀的整个流程大概就是这样子</p>
+<h5 id="问题集："><a href="#问题集：" class="headerlink" title="问题集："></a>问题集：</h5><p>1 是如何进行用户登录的</p>
+<p>首先有一个存放每一个用户的信息的表，叫user_info，用户信息的表中存放了用户id，用户手机号，加密过的用户密码，用户地址，用户性别和第三方凭证等信息，由于用户登录是一个可能有高并发的场景，所以我又开了一个表，叫user_login，专门存放user_id和用户密码，当然还有每条记录的主键id。用户登录登录需要访问信息表，得到user_id，再访问用户登录表，获取用户的密码，校验密码后实现登录；</p>
+<p>登录之后，一开始是将用户登陆的状态改成true和除了密码之外的用户信息，存到session中</p>
+<p>但如果要用到分布式，nginx反向代理实现分布式的话，session就没用了，因为session是存在本地的服务器上的，我们这时候用户登陆的凭证是无法保证存放在一个位置的，你可能登陆完之后，跳转值秒杀页面想要进行秒杀，他还是会显示你未登录，因为你已经跳转到另一个服务器了</p>
+<p>后来改成了生成登录的唯一凭证randomUUID，将UUID和用户信息绑在了一起，改成存到redis中，每次从服务器的redis中读取用户登录状态，</p>
+<p>后来改成了</p>
+<p>1.1 如果用户存在多个地址（或者其他XX），你应该怎么处理呢？</p>
+<p>专门开多另一张表来存放用户的地址或者XX，如果数量多则分表，如果经常访问加索引加redis，如果并发量过高，加redis集群加分布式</p>
+<p>1.2 用户的密码是如何加密的</p>
+<p>我的项目中是使用MD5的Hash加密方式，但像CRC和MD5这种定向加密的方式，现在貌似已经不安全了，因为有可能以一种类似Hash碰撞的形式被破解，我们可以在这个的基础上再加的随机盐值，加大他针对表数据的破解难度</p>
+<p>1.3 为什么user_login存的是user_id 而不是 用户账号</p>
+<p>因为用户的登录方式可以是手机，可能是邮箱，可能是微信和第三方等信息，我们可以根据他登录的凭证都多样化的设置登录方式，如果是手机和邮箱登录的话，则需要再次访问user_login表的加密后的密码，加密后的密码和输入后加密的密码是否一致，一致即登录成功；如果用的是微信或者第三方登录，我们将引入第三方的接口，如果第三方返回的登录成功信息为正确，即登录成功，无需再访问user_login表</p>
+<p>1.3.1 为什么要专门把加密后的密码 单独拿出来存放在user_login表中呢？</p>
+<p>因为其实 密码的用途仅仅是用来用户登录，我们有必要将用户密码的模块单独拿出来，单独实现登录，而用户除了密码的其他信息，可以实现查看用户信息的功能，用户信息是不需要密码的，如果将密码添加到用户信息表中，不仅会因为关键字的数量增加而导致查询sql执行速度降低，而且用户信息是会被修改的，在安全性的角度来讲，如果密码和用户信息在一张表的话，对表的信息进行操作的时候，可能会操作到密码，就比如注入攻击，安全性不够，所以，最好还是单独存放，操作user_login表，基于效率与安全性的角度来考虑</p>
+<p>1.3.2 为什么会使sql语句执行速度降低？</p>
+<p>查询的时候查多了一列数据，速度当然会降低呀</p>
+<p>1.3.3 为什么会被操作到密码？</p>
+<p>如果密码在用户信息表的话，查询用户信息的时候，sql注入攻击可能在查询的时候，得到用户的密码，也可能在修改的时候，修改用户的密码</p>
+<p>1.4 你是怎么处理用户的高并发的 或者说你是怎么实现用户的高并发的</p>
+<p>在mysql上，根据用户数量分库分表，一是可以实现读写分离，二是分表，降低sql语句执行的范围和维度，如果还需要的话，还可以加多个冷热分离，用户的冷表和热表，冷热分离是我在是项目上学到的</p>
+<p>在redis上，添加redis的集群，redis的读写分离，以及备用的slave哨兵redis监控主redis的使用情况，瘫痪了替换上去，然后根据用户数量对redis进行分表，实现redis集群</p>
+<p>1.4.1 冷热分离的具体实现？</p>
+<p>活跃的用户，进入热表，超过一定时间不登陆的用户，进入冷表，如果冷表的用户登录了的话，加入热表</p>
+<p>1.5 表的记录非常多的时候，你是怎么处理的</p>
+<p>分表咯，将用户信息表和用户登录表根据数量分表，比如说有1W个用户，按照(10000 mod 100) + 1 分为1~100个 101张表，每张表存放100个用户，降低表的维度，提高语句执行效率，加大命中率</p>
+<p>如果有需要，还可以加多个读写分离</p>
+<p>1.5.1 读写分离怎么解决冲突的问题？</p>
+<p>分主库和从库，修改的情况下，如果出现了读的语句，命中的是一条记录的话，如果对象为从库的话，不加锁的情况下，无论是先修改，还是先删除，其实只要某种情况下，导致主从不一致，主从不一致就会发生脏读。</p>
+<p>所以解决方法就是 要么直接读主库 要么加锁 让相应的操作同步执行</p>
+<p>1.6 说一下UUID是什么</p>
+<p>可以理解为在这台机器上的唯一标识符，全局唯一，起到了一个主键的作用。</p>
+<p>2 登陆后的商品列表页具体是怎么实现的，有没有什么优化方案</p>
+<p>首先数据是从哪里来的呢，数据是从数据库来的，我在数据库里建了个item表专门存商品信息，商品信息有商品id 商品名字 商品价格 商品销量 和商品图片链接，由于商品库存在秒杀的时候是会被频繁访问的，所以我专门开了个表用来存商品库存item_stock，里面有主键id、商品库存和商品ID，用户访问商品详情的时候，就会先访问商品信息表item，再根据商品id来查询库存表item_stock里的库存，然后根据数据渲染页面</p>
+<p>如果说是优化方案的话，我觉得如果有需要的话，可以将在秒杀活动期间的商品，把他们做一个推荐，推荐的形式可以有很多种，我们在这里的话，由于页面也比较简单，将对应商品推荐到列表首位，活动期间商品也做一个排序，排序的依据是距离秒杀开始的时间，升序排序</p>
+<p>2.1 库存有必要实时更新吗？</p>
+<p>库存在列表页没有必要实时更新吧，因为你本来秒杀就是一个高并发高访问库存表，你如果实时更新库存的话，只会给库存表的数据库层增加负担，没必要吧。</p>
+<p>2.2 你针对库存有什么优化方案吗，库存表被频繁访问？</p>
+<p>在已经分库分表的情况下，详情请看9.1</p>
+<p>3 商品详情页是怎么实现的</p>
+<p>商品详情页是可能被频繁访问与刷新的，我将商品详情页加上了redis缓存，保证高可用，分库读还是写 分表 这里好像没用到 写 只用到了读 分表的话 减少维度 10000%10这样子 去减少维度，</p>
+<p>4 商品详情页有什么需要遍历或者显示的信息，商品的信息有哪些</p>
+<p>5 是如何实现秒杀的</p>
+<p>6 是如何控制并发量 接收高并发的</p>
+<p>7 你是怎么发现并发问题的 </p>
+<p>8 你的某某表是怎么设计的</p>
+<p>9 整个项目中有哪些地方使用了redis的</p>
+<p>登录态 商品详情页 </p>
+<p>9.1 库存没有用redis ？ 用的是什么</p>
+<p>库存的更新用的是消息队列，异步更新商品库存，rocketmq是存在硬盘上的，在硬盘上实现的消息队列</p>
+<p>其实也可以用redis来缓存库存，甚至将redis来当作mysql来使用，实时访问redis的库存，但是这可能会无法与mysql保持一致性，数据无法保持一致性就可能会导致超卖 而且redis的思想是属于减了就不管了  redis是不支持回滚的  只会执行失败 或者 执行成功 他这是抱着一种 我执行的操作没问题 有问题也是你的逻辑或者代码有问题 把数据的错误 抛给了代码层面去处理 而不是 像mysql  有事务管理的机制</p>
+<p>如果用redis来做库存的话，可能需要让运维费心，让运维去保证数据是没有问题的，上一点人力，手动改库存，实时检查</p>
+<p>说跑题了 说回消息队列 消息队列的本质其实就是 实现 解耦 限流 削峰 </p>
+<p>将下订单和减库存两个服务 解耦 通过队列中的数量限制 实现限流 通过限制流量 实现削峰</p>
+<p>限制流量之后，服务器的承受能力提升，没那么容易崩溃，保证秒杀全过程的稳定性，降低迭机的可能性</p>
+<p>而异步实现的话，依旧有可能会下单失败之后，还是减了库存，这时候我们可能可以在逻辑上实现一个乐观锁，来保证库存的正确性，spring其实也有提供这么一种事务性消息队列应用的注解的使用，但我可能没用过</p>
+<p>如果说订单一直没有生成成功，数据库崩了，这时候我们需要有一个超时刷新的机制，保证整个流程的顺利进行</p>
+<p>9.2 说到削峰，还有没有什么更好的办法，如果用户频繁刷新，这个并发量可是非常大的</p>
+<p>削峰的话，用户流量我们可以也给用户加个秒杀令牌，当用户持有秒杀令牌的情况下，才能进行秒杀</p>
+<p>9.3 那异步实现的话 可能会出现异步消息发送失败 库存没见成功 或者扣减成功没通知  下单后 无法保证库存的正确 可能少了 怎么办</p>
+<p>我们可以加日志流水，我们开一个专门的流水存放表，每下一笔订单，生成一个流水记录，流水记录有流水号，商品id，商品数量，再加一个流水的状态，流水号可以用uuid生成，通过流水号建立联系后，判断状态字段是否为秒杀成功</p>
+<p>10 你用的服务器都是分开的吗</p>
+<h3 id="实习项目-稍微整理一下把"><a href="#实习项目-稍微整理一下把" class="headerlink" title="实习项目 稍微整理一下把"></a>实习项目 稍微整理一下把</h3><h4 id="gp-game-uin"><a href="#gp-game-uin" class="headerlink" title="gp_game_uin"></a>gp_game_uin</h4><p>其实就是 一个专门对游戏角色进行读和写操作的接口 </p>
+<p>这个服务中 根据写的protobuf协议 一共有X个功能</p>
+<p>获取gameUIn</p>
+<p>也是用redis缓存，并且分了mysql表，按照mod10分了10个表，缓存也分了10个</p>
+<p>通过gameUIn获取    uid</p>
+<p>通过uid获取所有的用户角色</p>
+<p>根据游戏id获取所有的游戏角色</p>
+<p>添加游戏角色即小号</p>
+<p>清除缓存 </p>
+<p>因为某些业务需求，我在这个服务上去添加了删除用户登录的缓存以及删除获取所有的游戏角色的缓存</p>
+<p>更新角色信息</p>
+<h4 id="困难"><a href="#困难" class="headerlink" title="困难"></a>困难</h4><p>首先留下这份代码的前人，写这份代码写的非常没有包容性，让我一个实习生竟然接触到了一份这么糟糕的代码，有非常多的可以复用的结构，或者说服用的某个函数方法，这份遗留代码是将这些东西写死在里面，所有的东西都是像写流水账一样的写写写，所以我写这份代码其实很大程度上是把他重构一遍，尽量让重复执行的东西，写成一个框架，然后，反复利用，我一开始对于这种代码是很抵触的，因为缺乏经验，其实有些害怕，想的没那么全面，不过重构了之后，感觉好像，能接受了，反正不就是一改嘛，改就完事了，慢慢改，所以实习还是很重要的，可以接触到真实的业务开发这种场景，心态就变了</p>
+<p>还有的技术上的困难的话，就是我的redis的主从一致性的问题了</p>
+<h4 id="PHP项目"><a href="#PHP项目" class="headerlink" title="PHP项目"></a>PHP项目</h4><p>邀请链接：</p>
+<p>链接的url 携带了 平台id 意思就是 是来自果盘的 还是来自66的 然后 追加经过urlencode变化过后的uid 再追加一个land 表示落地页 的意思 </p>
+<p>防刷的层面上就做了 验证码 挺影响用户体验的 还做了 一个表 专门记录 判断是否已经邀请过了 邀请过的话 就拒绝邀请</p>
+<p>如果要做优化的话 可能怕他一直刷 强行增加数量的话 那就加个锁呀 处理一下 </p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/notFinished/" rel="tag"># notFinished</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/08/Java/关于Java内存泄漏的思考/" rel="next" title="关于Java内存泄漏的思考">
+                <i class="fa fa-chevron-left"></i> 关于Java内存泄漏的思考
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/19/计算机网络/1.1计算机网络的形成与发展/" rel="prev" title="1.1 计算机网络的形成与发展">
+                1.1 计算机网络的形成与发展 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="Icebearice">
+            
+              <p class="site-author-name" itemprop="name">Icebearice</p>
+              <div class="site-description motion-element" itemprop="description">后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">58</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/164751245" title="164751245 &rarr; 164751245"><i class="fa fa-fw fa-qq"></i>164751245</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/icebearice" title="GitHub &rarr; https://github.com/icebearice" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/icebearice@qq.com" title="icebearice@qq.com &rarr; icebearice@qq.com"><i class="fa fa-fw fa-envelope"></i>icebearice@qq.com</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.cnblogs.com/Elvis827" title="博客园 &rarr; https://www.cnblogs.com/Elvis827" rel="noopener" target="_blank"><i class="fa fa-fw fa-vk"></i>博客园</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#两种archetype-quickstart和webapp的区别"><span class="nav-number">1.</span> <span class="nav-text">两种archetype quickstart和webapp的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#区别-项目结构不同"><span class="nav-number">1.0.1.</span> <span class="nav-text">区别:项目结构不同</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么会有这样的结构的区别呢"><span class="nav-number">1.0.2.</span> <span class="nav-text">为什么会有这样的结构的区别呢</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Building-a-RESFul-Web-Service"><span class="nav-number">1.1.</span> <span class="nav-text">Building a RESFul Web Service</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EnableAutoConfiguration"><span class="nav-number">1.2.</span> <span class="nav-text">@EnableAutoConfiguration</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加-ResponseBody-与不添加的区别"><span class="nav-number">1.3.</span> <span class="nav-text">添加@ResponseBody 与不添加的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RequestMapping注解中consumes与produces的区别"><span class="nav-number">1.4.</span> <span class="nav-text">RequestMapping注解中consumes与produces的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#项目源代码已经部署完成-新的目标"><span class="nav-number">1.5.</span> <span class="nav-text">项目源代码已经部署完成, 新的目标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JMeter性能压力测试"><span class="nav-number">1.6.</span> <span class="nav-text">JMeter性能压力测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程数量上不去的原因"><span class="nav-number">1.7.</span> <span class="nav-text">线程数量上不去的原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式会话token"><span class="nav-number">1.8.</span> <span class="nav-text">分布式会话token</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#redis"><span class="nav-number">1.9.</span> <span class="nav-text">redis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何避免脏读的"><span class="nav-number">1.10.</span> <span class="nav-text">如何避免脏读的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Guava-本地缓存"><span class="nav-number">1.11.</span> <span class="nav-text">Guava 本地缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lua缓存工具"><span class="nav-number">1.12.</span> <span class="nav-text">Lua缓存工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步同步数据库"><span class="nav-number">1.13.</span> <span class="nav-text">异步同步数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RokketMQ原理"><span class="nav-number">1.14.</span> <span class="nav-text">RokketMQ原理</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#项目面试总结"><span class="nav-number">2.</span> <span class="nav-text">项目面试总结</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#秒杀过程："><span class="nav-number">2.0.1.</span> <span class="nav-text">秒杀过程：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#问题集："><span class="nav-number">2.0.2.</span> <span class="nav-text">问题集：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实习项目-稍微整理一下把"><span class="nav-number">3.</span> <span class="nav-text">实习项目 稍微整理一下把</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#gp-game-uin"><span class="nav-number">3.1.</span> <span class="nav-text">gp_game_uin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#困难"><span class="nav-number">3.2.</span> <span class="nav-text">困难</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PHP项目"><span class="nav-number">3.3.</span> <span class="nav-text">PHP项目</span></a></li></ol></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2022</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Icebearice</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共72k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="/js/src/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: true,
+    appId: 'oaY0uDqkCsuX94AxTtnV6scO-gzGzoHsz',
+    appKey: 'HKU5SJPAd8KyYqk6Q8fdArL5',
+    placeholder: '写了评论, offer还会远吗? ----记得填写邮箱哦~如果可以填写你的网站互相参考就更好啦',
+    avatar: 'retro',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+  //增加以下六行代码去除 power by valine
+    var infoEle = document.querySelector('#comments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+      infoEle.childNodes.forEach(function(item) {
+        item.parentNode.removeChild(item);
+      });
+    }
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<!-- 页面点击小红心 -->
+<!-- <script type="text/javascript" src="/js/src/click.js"></script>-->
+</body>
+</html>

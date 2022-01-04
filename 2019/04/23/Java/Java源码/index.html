@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/libs/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/libs/pace/pace-theme-flash.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_small.ico?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":true,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Java源码Map HashMap LinkedHashMap TreeMap ConcurrentHashMap HashTable1 Hash Map存放键值对 JDK1.8之后，链表长度大于阈值8，将链表转换为红黑树 要将链表转换成红黑树的table的最小结点数为64 (n - 1) &amp;amp; hash 判断位置 jdk1.8后 hash函数 即 扰动函数 扰动一次 1.8前 扰动四次 默">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java源码">
+<meta property="og:url" content="https://icebearice.gitee.io/2019/04/23/Java/Java源码/index.html">
+<meta property="og:site_name" content="Icebearice">
+<meta property="og:description" content="Java源码Map HashMap LinkedHashMap TreeMap ConcurrentHashMap HashTable1 Hash Map存放键值对 JDK1.8之后，链表长度大于阈值8，将链表转换为红黑树 要将链表转换成红黑树的table的最小结点数为64 (n - 1) &amp;amp; hash 判断位置 jdk1.8后 hash函数 即 扰动函数 扰动一次 1.8前 扰动四次 默">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-26T14:50:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java源码">
+<meta name="twitter:description" content="Java源码Map HashMap LinkedHashMap TreeMap ConcurrentHashMap HashTable1 Hash Map存放键值对 JDK1.8之后，链表长度大于阈值8，将链表转换为红黑树 要将链表转换成红黑树的table的最小结点数为64 (n - 1) &amp;amp; hash 判断位置 jdk1.8后 hash函数 即 扰动函数 扰动一次 1.8前 扰动四次 默">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://icebearice.gitee.io/2019/04/23/Java/Java源码/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Java源码 | Icebearice</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Icebearice</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">18</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">58</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+<a href="https://github.com/icebearice" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/04/23/Java/Java源码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Icebearice">
+      <meta itemprop="description" content="后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Icebearice">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java源码
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+             
+                
+              
+
+              <time title="创建时间：2019-04-23 00:41:00" itemprop="dateCreated datePublished" datetime="2019-04-23T00:41:00+08:00">2019-04-23 00:41:00</time>
+            
+
+            
+              
+            <!--  old version
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+              <time title="修改时间：2019-04-26 22:50:06" itemprop="dateModified" datetime="2019-04-26T22:50:06+08:00">2019-04-26</time> 
+              -->
+              <!-- new version -->
+                        
+            <span class="post-updated">
+                
+                  <span class="post-meta-divider">|</span>
+                  
+
+                  <span class="post-meta-item-icon">
+                    <i class="fa fa-calendar-check-o"></i>
+                  </span>
+                  
+                    <span class="post-meta-item-text">更新于</span>
+                
+              <time itemprop="dateUpdated" datetime="2019-04-26T22:50:06+08:00" content="2019-04-26">
+                2019-04-26 22:50:06
+              </time>
+            </span>
+          
+            
+          </span>
+
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/04/23/Java/Java源码/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/23/Java/Java源码/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Java源码"><a href="#Java源码" class="headerlink" title="Java源码"></a>Java源码</h1><h3 id="Map-HashMap-LinkedHashMap-TreeMap-ConcurrentHashMap-HashTable"><a href="#Map-HashMap-LinkedHashMap-TreeMap-ConcurrentHashMap-HashTable" class="headerlink" title="Map HashMap LinkedHashMap TreeMap ConcurrentHashMap HashTable"></a>Map HashMap LinkedHashMap TreeMap ConcurrentHashMap HashTable</h3><h4 id="1-Hash-Map"><a href="#1-Hash-Map" class="headerlink" title="1 Hash Map"></a>1 Hash Map</h4><p>存放键值对</p>
+<p>JDK1.8之后，链表长度大于阈值8，将链表转换为红黑树</p>
+<p>要将链表转换成红黑树的table的最小结点数为64</p>
+<p>(n - 1) &amp; hash 判断位置</p>
+<p>jdk1.8后 hash函数 即 扰动函数 扰动一次 1.8前 扰动四次</p>
+<p>默认容量 16 负载因子 0.75</p>
+<p><strong>loadFactor太大导致查找元素效率低，太小导致数组的利用率低，存放的数据会很分散。loadFactor的默认值为0.75f是官方给出的一个比较好的临界值</strong>。</p>
+<p><strong>threshold = capacity * loadFactor</strong>，<strong>当Size&gt;=threshold</strong>的时候，那么就要考虑对数组的扩增了，也就是说，这个的意思就是 <strong>衡量数组是否需要扩增的一个标准</strong>。</p>
+<p>hashCode 将key的hashCode 异或^ value的hashCode</p>
+<p>Node节点中的equals 1 先确定是否是对象本身 2 若不是对象本身, 则判断是否为相同map.entry的实例 3 若为相同实例, 才能继续判断 对应的key是否equals      对应的value是否equals</p>
+<p>HashMap中 root 方法调用  根节点 不断地返回 parent </p>
+<p>红黑树 双向 parent left  right prev</p>
+<p>resize 扩容函数 若没超最大值 则扩容两倍 newThr = oldThr &lt;&lt; 1</p>
+<p>resize 尽量避免 因为  resize扩容之后  会将所有的oldtable值  全部重新遍历赋值到newtable中</p>
+<p>(e = oldTab[j]) != null)  为什么要这样子写 好处是什么???</p>
+<p>构造方法有四种:</p>
+<ol>
+<li>无参构造</li>
+<li>指定容量大小</li>
+<li>指定容量大小和负载因子</li>
+<li>包含另一个”Map”的构造函数</li>
+</ol>
+<p>HashMap为什么会 线程不安全  从底层的角度思考</p>
+<p>首先 HashMap与HashTable的区别就是 HashTable加了synchronized锁 HashMap没加</p>
+<p>其次 冲突可能出现在放置元素的put方法中,也可能出现在扩容方法resize中,我们先从put方法说起,假设版本在jdk1.8,冲突的对应链表节点的数量未超过8的情况下,假设同时有两个以上的线程出现同一个哈希碰撞,并且两个线程同时取到了冲突链表上的同一个位置,在这种情况下,必定有一个线程的值会丢失,只有一个坑可以占</p>
+<p>另外在resize的扩容方法中,由于扩容之后,需要将所有的节点赋值给已经扩容的新表,假设存在多个线程进行扩容,同时进行的话,只有最后赋值成功的新表,才会成为新表,其他在此线程之前重新赋值的表都作废</p>
+<p>表是以节点数组的状态存在的</p>
+<h4 id="HashCode为什么以一定是2的次幂"><a href="#HashCode为什么以一定是2的次幂" class="headerlink" title="HashCode为什么以一定是2的次幂"></a>HashCode为什么以一定是2的次幂</h4><h5 id="看链接-http-www-cnblogs-com-chengxiao-p-6059914-html-t3"><a href="#看链接-http-www-cnblogs-com-chengxiao-p-6059914-html-t3" class="headerlink" title="(看链接)http://www.cnblogs.com/chengxiao/p/6059914.html#t3"></a>(看链接)<a href="http://www.cnblogs.com/chengxiao/p/6059914.html#t3" target="_blank" rel="noopener">http://www.cnblogs.com/chengxiao/p/6059914.html#t3</a></h5><p>HashMap和HashTable区别</p>
+<ol>
+<li>前者线程不安全, 后者线程安全,原因是因为后者加了synchronized锁</li>
+<li>前者可以接受null的key和value, 后者不行</li>
+<li>在单线程的情况下, 前者的性能要比后者要快</li>
+<li>前者的初始容量为16, 扩容以指数形式扩容, 即2的倍数, 后者的初始容量为11, 扩容是两倍的原容量+1</li>
+</ol>
+<h4 id="2-LinkedHashMap-继承HashMap"><a href="#2-LinkedHashMap-继承HashMap" class="headerlink" title="2 LinkedHashMap 继承HashMap"></a>2 LinkedHashMap 继承HashMap</h4><p>底层是super调用父类的无参构造方法</p>
+<p>存在accessOrder的boolean变量 若为false则插入是有序的, 若为true,则插入和访问的顺序都是有序的, 会对里面的键值对进行排序</p>
+<p>实则是本质上是双向链表+HashMap</p>
+<h3 id="面试中关于HashMap的时间复杂度O-1-的思考"><a href="#面试中关于HashMap的时间复杂度O-1-的思考" class="headerlink" title="面试中关于HashMap的时间复杂度O(1)的思考"></a>面试中关于HashMap的时间复杂度O(1)的思考</h3><p>分四步：<br>1.判断key，根据key算出索引。<br>2.根据索引获得索引位置所对应的键值对链表。<br>3.遍历键值对链表，根据key找到对应的Entry键值对。<br>4.拿到value。 </p>
+<p>以上四步要保证HashMap的时间复杂度O(1)，需要保证每一步都是O(1)，现在看起来就第三步对链表的循环的时间复杂度影响最大，链表查找的时间复杂度为O(n)，与链表长度有关。我们要保证那个链表长度为1，才可以说时间复杂度能满足O(1)。但这么说来只有那个hash算法尽量减少冲突，才能使链表长度尽可能短，理想状态为1。因此可以得出结论：HashMap的查找时间复杂度只有在最理想的情况下才会为O(1)，而要保证这个理想状态不是我们开发者控制的。</p>
+<p>查询插入 O(1) 删除O(n)</p>
+<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p>有序可重复 可克隆 可序列化</p>
+<p>继承abstractList 实现list<e> RandomAccess(快速随机访问 故用for循环遍历效率更高 但用iterator访问更安全 因为当访问的数据发生改变的时候 他会抛异常 异常是) Clonable Serializable</e></p>
+<p>默认初始容量大小为10 初始为空数组 添加第一个元素后 容量才变成10 </p>
+<p>通过反射来判断对象是否符合elementData.getClass() != Object[].class</p>
+<p>如果未指定Object, 则令elementData为默认空数组</p>
+<p>修改实力容量为当前大小(最小化ArrayList实例)是通过copyof实现的</p>
+<p>扩容因子为1.5 int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1)</p>
+<p>检查newCapacity是否溢出, 若溢出了则赋值为数组最大值 Integer.MAX_VALUE 同时 对象头的最大信息占用内存不可超过8个字节</p>
+<p>为什么最大数组大小为Integer.MAX_VALUE - 8 因为8个字节用来存数组的头信息</p>
+<p>占满32位的内存单元长度</p>
+<p>遍历O(1) 插入删除O(n)</p>
+<p>关于自动装箱与自动拆箱 Java中的八大数据类型都有对应的包装类 Java是以对象的形式来保存八大数据类型的, 实现真正的面向对象</p>
+<p>三个构造函数</p>
+<ol>
+<li>无参</li>
+<li>指定容量</li>
+<li>指定集合</li>
+</ol>
+<p>copyof为重构当前数组 底层调用了arraycopy 目标函数为新数组</p>
+<p>copyofrange是对数组进行复制</p>
+<p>arraycopy需要目标函数,拷贝到自定义的数组中</p>
+<p>底层采用newcapacity - mincapacity &lt; 0 代替 newcapacity &lt; mincapacity 运算更快</p>
+<p>remove 删除对象 fastremove 删除u索引 remove调用了faseremove clear 删除所有元素addAll 追加添加 可指定位置 modCount 改变list大小的次数</p>
+<p>扩容机制 为了避免只扩充少量频繁的拷贝的情况 导致降低性能 有着良好的扩容机制 扩容因子为1.5倍</p>
+<p>Arrays.toArray() 得到的是Object[] 不可向下转型为其他对象类型</p>
+<p>Arrays.toArray(T&lt;&gt;[]) 好用 </p>
+<h5 id="那ArrayList为什么线程不安全呢"><a href="#那ArrayList为什么线程不安全呢" class="headerlink" title="那ArrayList为什么线程不安全呢"></a>那ArrayList为什么线程不安全呢</h5><p>从底层来讲 举个例子 比如 在当前size为0的情况下 ArrayList底层会在有第一个数据存入的时候 将容量改为初始容量 出现多个线程同时存储值进入list中 只有最后一个存储的线程的值可以存到list中 而其他的线程的值全都会丢失 而不会存入list中 尽管capacity为初始容量 16  但 size还是等于1 只有一个值存了进来</p>
+<h3 id="LinkedList-线程不安全-synchronizedList"><a href="#LinkedList-线程不安全-synchronizedList" class="headerlink" title="LinkedList 线程不安全 synchronizedList"></a>LinkedList 线程不安全 synchronizedList</h3><p>在任何位置高效地插入和删除的有序序列 基于 双向链表实现的</p>
+<p>继承AbstractSequentialList</p>
+<p>有一个头结点 一个尾节点 我们可以从头遍历 也可以从尾遍历</p>
+<p>checkPositionIndex(index); 检查index是否在size范围内</p>
+<p>始终会记录着first节点和last节点</p>
+<h4 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h4><p>可变长度的数组    长度变化靠capacity 和capacityIncrement</p>
+<p>构造方法三种</p>
+<ol>
+<li>无参构造 默认构造初始容量为10</li>
+<li>initialCapacity 初始化容量 一个参数</li>
+<li>initialCapacity 初始化容量 capacityIncrement 容量增长值 两个参数</li>
+</ol>
+<p>其中构造方法1调用构造方法2 构造方法2调用构造方法3 默认初始容量为10 默认容量增长值为0(默认扩增为两倍原长度)</p>
+<h4 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h4><p>继承Vector    线程安全</p>
+<p>push(E) pop() peek() empty()</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/15/算法/2 字符串的排列/" rel="next" title="字符串的排列">
+                <i class="fa fa-chevron-left"></i> 字符串的排列
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/23/数据库/关于数据库索引的思考/" rel="prev" title="关于数据库索引的思考">
+                关于数据库索引的思考 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="Icebearice">
+            
+              <p class="site-author-name" itemprop="name">Icebearice</p>
+              <div class="site-description motion-element" itemprop="description">后端开发，想学好多东西，但是学不来咯，得择重咯，2020届，大四，找工作ing</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">58</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/164751245" title="164751245 &rarr; 164751245"><i class="fa fa-fw fa-qq"></i>164751245</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/icebearice" title="GitHub &rarr; https://github.com/icebearice" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/icebearice@qq.com" title="icebearice@qq.com &rarr; icebearice@qq.com"><i class="fa fa-fw fa-envelope"></i>icebearice@qq.com</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.cnblogs.com/Elvis827" title="博客园 &rarr; https://www.cnblogs.com/Elvis827" rel="noopener" target="_blank"><i class="fa fa-fw fa-vk"></i>博客园</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java源码"><span class="nav-number">1.</span> <span class="nav-text">Java源码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Map-HashMap-LinkedHashMap-TreeMap-ConcurrentHashMap-HashTable"><span class="nav-number">1.0.1.</span> <span class="nav-text">Map HashMap LinkedHashMap TreeMap ConcurrentHashMap HashTable</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Hash-Map"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">1 Hash Map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HashCode为什么以一定是2的次幂"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">HashCode为什么以一定是2的次幂</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#看链接-http-www-cnblogs-com-chengxiao-p-6059914-html-t3"><span class="nav-number">1.0.1.2.1.</span> <span class="nav-text">(看链接)http://www.cnblogs.com/chengxiao/p/6059914.html#t3</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-LinkedHashMap-继承HashMap"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">2 LinkedHashMap 继承HashMap</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面试中关于HashMap的时间复杂度O-1-的思考"><span class="nav-number">1.0.2.</span> <span class="nav-text">面试中关于HashMap的时间复杂度O(1)的思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList"><span class="nav-number">1.0.3.</span> <span class="nav-text">ArrayList</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#那ArrayList为什么线程不安全呢"><span class="nav-number">1.0.3.0.1.</span> <span class="nav-text">那ArrayList为什么线程不安全呢</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedList-线程不安全-synchronizedList"><span class="nav-number">1.0.4.</span> <span class="nav-text">LinkedList 线程不安全 synchronizedList</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vector"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">Vector</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Stack"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">Stack</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2022</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Icebearice</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共72k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/libs/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/libs/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/libs/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="/js/src/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: true,
+    appId: 'oaY0uDqkCsuX94AxTtnV6scO-gzGzoHsz',
+    appKey: 'HKU5SJPAd8KyYqk6Q8fdArL5',
+    placeholder: '写了评论, offer还会远吗? ----记得填写邮箱哦~如果可以填写你的网站互相参考就更好啦',
+    avatar: 'retro',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+  //增加以下六行代码去除 power by valine
+    var infoEle = document.querySelector('#comments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+      infoEle.childNodes.forEach(function(item) {
+        item.parentNode.removeChild(item);
+      });
+    }
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<!-- 页面点击小红心 -->
+<!-- <script type="text/javascript" src="/js/src/click.js"></script>-->
+</body>
+</html>
