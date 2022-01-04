@@ -887,7 +887,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/08/29/Java/辣鸡回收 GC finallize 方法小结 /">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/2019/08/29/Java/Java知识体系串讲1-基础知识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Icebearice">
@@ -907,7 +907,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/08/29/Java/辣鸡回收 GC finallize 方法小结 /" class="post-title-link" itemprop="url">垃圾回收GC finalize方法 小结</a>
+                <a href="/2019/08/29/Java/Java知识体系串讲1-基础知识/" class="post-title-link" itemprop="url">Java基础知识体系串讲1-基础知识</a>
               
             
           </h1>
@@ -971,8 +971,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/08/29/Java/辣鸡回收 GC finallize 方法小结 /#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/29/Java/辣鸡回收 GC finallize 方法小结 /" itemprop="commentCount"></span>
+                <a href="/2019/08/29/Java/Java知识体系串讲1-基础知识/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/29/Java/Java知识体系串讲1-基础知识/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1001,19 +1001,30 @@
 
       
         
-          <h2 id="垃圾回收GC-finalize方法-小结"><a href="#垃圾回收GC-finalize方法-小结" class="headerlink" title="垃圾回收GC finalize方法 小结"></a>垃圾回收GC finalize方法 小结</h2><blockquote>
-<p>這是屬於 java.lang.Object 上的一個 method, 其設計目的是保證物件在被 GC 之前完成特定資源的回收作業. 不過由於這東西真的太不穩定了, 所以從 JDK 9 開始已經被標成 deprecated 了.</p>
-<p>至於這個…, 就把它當作時代的眼淚吧. 這在業界裡基本上是一再證明不是個好方案了, 所以在 JDK 9 中已經被標註為 deprecated 了. 除非你有特殊原因, 不然不要去實作這個方法, 也不要期待透過這個方法來進行 GC. 原因很簡單: 因為你沒有辦法確保 finalize 的執行時間. 就算執行了, 也不確定是否能符合預期 (這要扯到 JVM 的 GC 機制, 這邊沒地方寫了). 使用不當還會影響性能, 進而導致 dead lock, hanging 等問題.</p>
-</blockquote>
-<h4 id="手动垃圾回收的三种方式"><a href="#手动垃圾回收的三种方式" class="headerlink" title="手动垃圾回收的三种方式"></a>手动垃圾回收的三种方式</h4><ul>
-<li>其实小标题是一种误导，这根本不是三种方式，因为我们可以做的只是通过手动的形式 增加一些机会 执行一些内存清理释放的方法 的机会<ol>
-<li>将对象设为null，GC会优先回收 String xx = null;</li>
-<li>finallize方法，GC在回收对象之前调用该方法，你可以重写此方法来增加一些close和什么鬼的方法，统一资源清理（已经不推荐了）</li>
-<li>System.gc 会添加GC的机会，其实这个gc()函数的作用只是提醒虚拟机：程序员希望进行一次垃圾回收。但是它不能保证垃圾回收一定会进行，而且具体什么时候进行是取决于具体的虚拟机的，不同的虚拟机有不同的对策。</li></ol></li></ul>
+          <h2 id="Java基础知识体系串讲1-基础知识"><a href="#Java基础知识体系串讲1-基础知识" class="headerlink" title="Java基础知识体系串讲1-基础知识"></a>Java基础知识体系串讲1-基础知识</h2><h4 id="知识层次分布"><a href="#知识层次分布" class="headerlink" title="知识层次分布"></a>知识层次分布</h4><ul>
+<li><p>特性</p>
+<ul>
+<li>简单性<ul>
+<li>Java没有头文件 指针运算 结构体 联合 操作符重载 等C++的特性 使用起来相对简单</li>
+</ul>
+</li>
+<li>面向对象<ul>
+<li>面向对象是一种程序设计技术，它将重点放在数据（即对象）和对象的接口上</li>
+<li>与C++不同的点在于多重继承，Java取而代之的是接口概念</li>
+</ul>
+</li>
+<li>分布式（加粗为总结 非加粗为原文）<ul>
+<li><strong>我的理解：为什么Java有分布式的特性：</strong><ul>
+<li><strong>Java有丰富的库，用于处理TCP/IP协议，即可通过对应协议处理URL访问对应网络对象，从而可以建立起一条网络对象与网络对象之间沟通的渠道，从而实现分布式通信网络互联的多处理机体系结构上</strong></li>
+</ul>
+</li>
+<li>Java有丰富的库，用于处理像HTTP和FTP之类的TCP/IP协议</li>
+<li>Java应用程序能够通过URL打开和访问网络上的对象，极其便携</li>
+<li>分布式软件系统是支持分布式处理的软件系统，是在由<strong>通信网络互联</strong>的<strong>多处理机体系结构</strong>上执行任务的系统。它包括分布式操作系统、分布式程序设计语言及其编译（解释）系统、分布式文件系统和分布式数据库系统等</li></ul></li></ul></li></ul>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2019/08/29/Java/辣鸡回收 GC finallize 方法小结 /#more" rel="contents">
+              <a class="btn" href="/2019/08/29/Java/Java知识体系串讲1-基础知识/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

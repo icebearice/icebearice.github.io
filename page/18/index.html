@@ -1416,7 +1416,7 @@ tomcat
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/1970/01/01/Web开发/Web开发相关问题/">
+    <link itemprop="mainEntityOfPage" href="https://icebearice.gitee.io/1970/01/01/并发/针对并发的思考/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Icebearice">
@@ -1436,7 +1436,7 @@ tomcat
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/1970/01/01/Web开发/Web开发相关问题/" class="post-title-link" itemprop="url">未命名</a>
+                <a href="/1970/01/01/并发/针对并发的思考/" class="post-title-link" itemprop="url">未命名</a>
               
             
           </h1>
@@ -1516,8 +1516,8 @@ tomcat
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/1970/01/01/Web开发/Web开发相关问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/1970/01/01/Web开发/Web开发相关问题/" itemprop="commentCount"></span>
+                <a href="/1970/01/01/并发/针对并发的思考/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/1970/01/01/并发/针对并发的思考/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1547,22 +1547,45 @@ tomcat
       
         
           
-            <ol>
-<li><p>Restful和RPC的区别</p>
-<p>什么是<strong>RESTful</strong>架构：</p>
-<ul>
-<li>每一个URI代表一种资源；</li>
-<li>客户端和服务器之间，传递这种资源的某种表现层；</li>
-<li>客户端通过四个HTTP动词，对服务器端资源进行操作，实现”表现层状态转化”。</li>
-</ul>
+            <h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><h4 id="死锁发生的情形"><a href="#死锁发生的情形" class="headerlink" title="死锁发生的情形"></a>死锁发生的情形</h4><ol>
+<li>一个线程两次申请锁</li>
+<li>两个线程互相申请对方的锁，但是对方都不释放锁</li>
+</ol>
+<h4 id="产生死锁的条件与破坏条件的方式"><a href="#产生死锁的条件与破坏条件的方式" class="headerlink" title="产生死锁的条件与破坏条件的方式"></a>产生死锁的条件与破坏条件的方式</h4><ol>
+<li><p>互斥：一个资源每次只能被一个进程使用</p>
+<p><code>无法解决，互斥是设备的固有属性，有了互斥才能保证每个进程对资源的顺利占有使用</code></p>
+</li>
+<li><p>请求与保持：一个进程因请求资源而阻塞，对已获得的资源保持不放</p>
+<p><code>要求进程一次性获取所有资源，保证进程的运行的顺利执行，效率较低</code></p>
+</li>
+<li><p>不剥夺：进程已获得的资源，在未使用完之外，不能强行剥夺</p>
+<p><code>当某进程所需新的资源被其他进程占有时，释放已占有资源</code></p>
+</li>
+<li><p>循环等待：若干进程之间形成一种头尾相接的循环等待资源关系</p>
+<p><code>通过定义资源类型，使其根据类型来顺序执行，效率较低</code></p>
 </li>
 </ol>
-<ol start="2">
-<li><p>Ngxin的多路复用</p>
-<p>异步阻塞I/O：带有阻塞通知的非阻塞I/O</p>
+<h4 id="处理死锁的四种方法"><a href="#处理死锁的四种方法" class="headerlink" title="处理死锁的四种方法"></a>处理死锁的四种方法</h4><ol>
+<li><p>死锁预防：通过确保死锁的一个必要条件不会满足，预防死锁</p>
+<p><code>四个破坏条件的方式，即预防死锁</code></p>
 </li>
-<li></li>
+<li><p>死锁避免：防止系统进入不安全状态-可能产生死锁的状态即不安全状态</p>
+<p><code>进程启动拒绝和资源分配拒绝（银行家算法，采用资源分配拒绝）</code></p>
+<p><a href="https://blog.csdn.net/cout_sev/article/details/24980627" target="_blank" rel="noopener">https://blog.csdn.net/cout_sev/article/details/24980627</a></p>
+<p><a href="https://blog.csdn.net/qq_33414271/article/details/80245715" target="_blank" rel="noopener">https://blog.csdn.net/qq_33414271/article/details/80245715</a></p>
+</li>
+<li><p>死锁检测：允许死锁的发生，通过系统设置的检测机制来检测死锁的发生，通常与死锁解除搭配使用</p>
+<p><code>通过资源分配表来实现</code></p>
+</li>
+<li><p>死锁解除：通常与死锁检测搭配使用，已监测到了死锁，通过挂起进程或者撤销进程的形式，回收资源加以分配</p>
+<p><code>资源剥夺法和撤销进程法</code></p>
+</li>
 </ol>
+<h3 id="并发编程的挑战"><a href="#并发编程的挑战" class="headerlink" title="并发编程的挑战"></a>并发编程的挑战</h3><h4 id="并发编程的目的"><a href="#并发编程的目的" class="headerlink" title="并发编程的目的"></a>并发编程的目的</h4><p>为了让程序运行的更快，希望通过多线程执行任务让程序运行得更快，但会面临非常多的挑战，比如上下文切换问题、死锁问题，以及受限于硬件和软件的资源限制问题</p>
+<h4 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h4><p>任务从<code>保存</code>到<code>再次加载</code>的过程就是一次<code>上下文切换</code>，关键字：时间片，状态保存，状态再次加载</p>
+<p><code>单核处理器</code>也支持多线程执行代码，CPU通过给每个线程分配CPU时间片来实现这个机制。时间片是CPU分配给各个线程的时间，因为时间片非常短，所以CPU通过不停地切换线程执行，让我们感觉是多个线程在同时执行，时间片一般为几十毫秒</p>
+<p>CPU通过时间片分配算法来循环执行任务，当前任务执行一个时间片后会切换到下一个任务，切换前会保存上一个任务的状态，以便下次切换回这个任务，可以恢复原来的状态。所以任务从保存到再次加载的过程就是一次上下文切换</p>
+<h4 id="多线程（并发）就一定比串行要快吗"><a href="#多线程（并发）就一定比串行要快吗" class="headerlink" title="多线程（并发）就一定比串行要快吗"></a>多线程（并发）就一定比串行要快吗</h4><p>不一定，当<strong>并发执行操作未超过一定次数</strong>的时候，串行的执行速度是比并发要快的，因为并发执行需要频繁的<strong>创建线程</strong>与<strong>上下文切换</strong></p>
 
           
         
